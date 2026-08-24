@@ -1,0 +1,90 @@
+{
+  "SiC": {
+    "material": "SiC",
+    "band_cm-1": [
+      1500.0,
+      4000.0
+    ],
+    "per_angle_peak_regression": [
+      {
+        "fft_frequency_cycles_per_cm-1": 0.004001328441042668,
+        "thickness_um": 7.481243771543807,
+        "peak_trough_disagreement_um": 0.0471655327121443,
+        "extrema_count": 22
+      },
+      {
+        "fft_frequency_cycles_per_cm-1": 0.004001328441042668,
+        "thickness_um": 7.482683611932144,
+        "peak_trough_disagreement_um": 0.006379183932801347,
+        "extrema_count": 20
+      }
+    ],
+    "single_beam_joint": {
+      "thickness_um": 7.4500677508452835,
+      "rss": 82.35699264904099,
+      "bic": -49951.08453175389,
+      "harmonic2_to_fundamental": []
+    },
+    "three_harmonic_joint": {
+      "thickness_um": 7.473503766200457,
+      "rss": 73.93851390574562,
+      "bic": -50847.35643735573,
+      "harmonic2_to_fundamental": [
+        0.042355503198248975,
+        0.06053046720973353
+      ]
+    },
+    "delta_BIC_three_minus_one": -896.2719056018395,
+    "band_sensitivity_um": [
+      7.497291936577374,
+      7.481963691737976,
+      7.497556093915954
+    ],
+    "reported_thickness_um": 7.481963691737976,
+    "sensitivity_half_range_um": 0.00779620108898893
+  },
+  "Si": {
+    "material": "Si",
+    "band_cm-1": [
+      1000.0,
+      4000.0
+    ],
+    "per_angle_peak_regression": [
+      {
+        "fft_frequency_cycles_per_cm-1": 0.0023341082572748894,
+        "thickness_um": 3.4758883723846647,
+        "peak_trough_disagreement_um": 0.00447704379119962,
+        "extrema_count": 16
+      },
+      {
+        "fft_frequency_cycles_per_cm-1": 0.0023341082572748894,
+        "thickness_um": 3.474037920689158,
+        "peak_trough_disagreement_um": 0.2407953399560685,
+        "extrema_count": 16
+      }
+    ],
+    "single_beam_joint": {
+      "thickness_um": 3.624802518093194,
+      "rss": 21819.65864887101,
+      "bic": 7186.220262744468,
+      "harmonic2_to_fundamental": []
+    },
+    "three_harmonic_joint": {
+      "thickness_um": 3.6509302164870965,
+      "rss": 16865.656748517016,
+      "bic": 4207.788814956931,
+      "harmonic2_to_fundamental": [
+        0.10376113732899182,
+        0.07199700325966746
+      ]
+    },
+    "delta_BIC_three_minus_one": -2978.431447787537,
+    "band_sensitivity_um": [
+      3.541339428119315,
+      3.4749631465369113,
+      3.4513145802020206
+    ],
+    "reported_thickness_um": 3.4749631465369113,
+    "sensitivity_half_range_um": 0.04501242395864713
+  }
+}

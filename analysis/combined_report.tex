@@ -1,0 +1,394 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+\usepackage[a4paper,top=2.35cm,bottom=2.25cm,left=2.35cm,right=2.35cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{graphicx,float,caption}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\definecolor{mainblue}{RGB}{35,78,112}
+\definecolor{softgray}{RGB}{245,247,249}
+\hypersetup{colorlinks=true,linkcolor=mainblue,urlcolor=mainblue,citecolor=mainblue}
+\captionsetup{font=small,labelfont=bf}
+\setlist{nosep,leftmargin=2em}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.25em}
+\renewcommand{\arraystretch}{1.22}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{2025 全国大学生数学建模竞赛 B、C 题试解}
+\fancyhead[R]{低自由度、可解释建模}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{15pt}
+\Urlmuskip=0mu plus 2mu\relax
+
+\newcommand{\resultbox}[1]{%
+  \begin{center}\fcolorbox{mainblue}{softgray}{\parbox{0.87\textwidth}{#1}}\end{center}}
+
+\title{\bfseries 2025 年全国大学生数学建模竞赛\\[0.5em]
+B、C 题数学模型与数值试解}
+\author{基于题目附件的可复现分析}
+\date{2026 年 8 月}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+本文分别求解碳化硅外延层厚度反演与 NIPT 检测时点选择问题。B 题采用色散修正的干涉相位模型、两角度极值间距估计和多谐波诊断，避免将密集频谱点误作独立样本；得到 SiC 外延层厚度约 $7.482\,\mu\mathrm m$，Si 外延层厚度约 $3.475\,\mu\mathrm m$。C 题以孕妇为独立单位，使用随机截距混合效应模型和区间删失 AFT 模型；得到 BMI 分界点约 34.50，对应的 90\% 达标检测时点约为 14 周 3 天和 20 周 3 天。女胎数据没有真实异常出生结局，患者级交叉验证 AUC 仅为 0.54--0.58，故不能据此建立可靠临床诊断器。全文坚持低自由度、机制优先和患者级验证原则。
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\part{B 题：碳化硅外延层厚度的确定}
+
+\section{模型假设与光学相位}
+
+记真空波数为 $\sigma=1/\lambda$，外延层厚度为 $d$，空气入射角为 $\theta_0$，外延层折射率为 $n(\sigma)$。层内折射角由 Snell 定律给出：
+\begin{equation}
+\sin\theta_t(\sigma)=\frac{\sin\theta_0}{n(\sigma)}.
+\end{equation}
+上表面反射光与在外延层--衬底界面反射一次后出射的光之间的相位差为
+\begin{equation}
+\Phi(\sigma)=4\pi d\sigma n(\sigma)\cos\theta_t(\sigma)+\phi_r
+=4\pi d\sigma\sqrt{n^2(\sigma)-\sin^2\theta_0}+\phi_r,
+\end{equation}
+其中 $\phi_r$ 为界面反射相移。单次反射近似下
+\begin{equation}
+R(\sigma)=B(\sigma)+A(\sigma)\cos\Phi(\sigma)+\varepsilon(\sigma),
+\end{equation}
+$A$、$B$ 分别表示缓慢变化的包络和背景。
+
+定义色散修正光学坐标
+\begin{equation}
+q(\sigma,\theta_0)=2\sigma\sqrt{n^2(\sigma)-\sin^2\theta_0}.
+\end{equation}
+同类相邻极值相差一个干涉级次，故
+\begin{equation}
+d\,[q(\sigma_{k+1})-q(\sigma_k)]=1,\qquad
+\widehat d_k=\frac{1}{q(\sigma_{k+1})-q(\sigma_k)}.
+\end{equation}
+若 $n$ 近似常数，上式退化为
+\begin{equation}
+d=\frac{1}{2\Delta\sigma\sqrt{n^2-\sin^2\theta_0}}.
+\end{equation}
+
+\section{折射率色散与可辨识性}
+
+厚度与完全未知的折射率函数不能从四条光谱中同时自由辨识，故必须使用材料物理先验。Si 采用 Edwards--Ochoa 在 $26\,^{\circ}\mathrm C$ 下的红外色散公式：
+\begin{align}
+n(\lambda)&=A+BL+CL^2+D\lambda^2+E\lambda^4,\\
+L&=(\lambda^2-0.028)^{-1},
+\end{align}
+其中 $\lambda$ 以 $\mu\mathrm m$ 计，$A=3.41983$、$B=0.159906$、$C=-0.123109$、$D=1.26878\times10^{-6}$、$E=-1.95104\times10^{-9}$。
+
+低掺杂 4H-SiC 在避开声子吸收带后使用 Lorentz 振子模型：
+\begin{equation}
+\varepsilon(\sigma)=\varepsilon_\infty\left[1+
+\frac{\sigma_L^2-\sigma_T^2}{\sigma_T^2-\sigma^2-i\Gamma\sigma}\right],
+\qquad n(\sigma)=\sqrt{\operatorname{Re}\varepsilon(\sigma)},
+\end{equation}
+其中 $\varepsilon_\infty=6.56$、$\sigma_L=970.1\,\mathrm{cm^{-1}}$、$\sigma_T=793.9\,\mathrm{cm^{-1}}$、$\Gamma=5.501\,\mathrm{cm^{-1}}$。
+
+\section{数值算法}
+
+\begin{enumerate}
+  \item 剔除零值点与强吸收区域；SiC 主估计采用 $1500$--$4000\,\mathrm{cm^{-1}}$。
+  \item 使用低阶 Savitzky--Golay 趋势估计背景，仅以残差定位条纹，不移动原始极值波数。
+  \item FFT 只用于获得主周期初值和极值最小间距，不作为最终厚度结果。
+  \item 对峰、谷分别计算相邻极值的 $1/\Delta q$，用中位数抵抗漏峰和伪峰。
+  \item $10^\circ$ 与 $15^\circ$ 数据分别估计，并利用同一晶圆共享厚度进行一致性校验。
+  \item 改变频段重复计算。相邻频谱点高度相关，不用 7469 个点的独立样本假设构造虚假的窄置信区间。
+\end{enumerate}
+
+\section{SiC 厚度结果}
+
+\begin{table}[H]
+\centering
+\caption{SiC 两角度厚度估计}
+\begin{tabular}{lccc}
+\toprule
+数据 & 入射角 & 厚度/$\mu\mathrm m$ & 峰谷估计差/$\mu\mathrm m$\\
+\midrule
+附件 1 & $10^\circ$ & 7.4812 & 0.0472\\
+附件 2 & $15^\circ$ & 7.4827 & 0.0064\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\resultbox{两角度共同估计为
+\[
+\boxed{d_{\mathrm{SiC}}=7.482\,\mu\mathrm m}.
+\]
+考虑折射率模型、角度、峰位和频段敏感性，建议工程报告值为
+$d_{\mathrm{SiC}}\approx7.48\pm0.03\,\mu\mathrm m$。}
+
+三个相邻频段的共同估计为 7.4973、7.4820、7.4976 $\mu\mathrm m$。频段半极差约 $0.0078\,\mu\mathrm m$，但这并不包含折射率模型误差，不能直接当成总置信区间。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\textwidth]{outputs/B题/SiC_spectral_fit.png}
+\caption{SiC 原始反射谱、选取频段与单/多谐波拟合}
+\end{figure}
+
+\section{多光束干涉模型与判别}
+
+多光束干涉可观察到的必要条件包括：光源相干长度大于相邻光束光程差；界面有效反射率足够大；上下界面平行且粗糙度较低；各级光束空间重叠；仪器分辨率足够；所选频段吸收不过强。
+
+设两界面的 Fresnel 振幅反射系数为 $r_{01}$、$r_{12}$，几何级数求和得到
+\begin{equation}
+r_{\mathrm{eff}}(\sigma)=
+\frac{r_{01}+r_{12}e^{i\Phi(\sigma)}}{1+r_{01}r_{12}e^{i\Phi(\sigma)}},
+\qquad R(\sigma)=|r_{\mathrm{eff}}(\sigma)|^2.
+\end{equation}
+弱损耗时可写为 Airy 型：
+\begin{equation}
+R=B+A\frac{F\sin^2(\Phi/2)}{1+F\sin^2(\Phi/2)},
+\qquad F=\frac{4\rho}{(1-\rho)^2}.
+\end{equation}
+多光束主要改变峰形并产生高次谐波，理想情况下基本相位周期仍由厚度决定。因此本文用基本极值间距估计厚度，用高次谐波诊断多光束，而不是用低通滤波强行抹去物理信号。
+
+\begin{table}[H]
+\centering
+\caption{二次谐波相对基频振幅}
+\begin{tabular}{lcc}
+\toprule
+材料 & $10^\circ$ & $15^\circ$\\
+\midrule
+SiC & 4.2\% & 6.1\%\\
+Si  & 10.4\% & 7.2\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Si 的低波数条纹更尖、谐波更强，单谐波模型还留下周期残差，因此附件 3、4支持较明显的多光束影响。SiC 也存在弱谐波，但对基本周期影响较小。
+
+\section{Si 厚度与多光束修正结论}
+
+\begin{table}[H]
+\centering
+\caption{Si 两角度厚度估计}
+\begin{tabular}{lcc}
+\toprule
+数据 & 入射角 & 厚度/$\mu\mathrm m$\\
+\midrule
+附件 3 & $10^\circ$ & 3.4759\\
+附件 4 & $15^\circ$ & 3.4740\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\resultbox{Si 的共同基本周期给出
+\[
+\boxed{d_{\mathrm{Si}}=3.475\,\mu\mathrm m},
+\]
+考虑高波数端条纹衰减和峰谷差，保守报告为
+$d_{\mathrm{Si}}\approx3.48\pm0.12\,\mu\mathrm m$。}
+
+SiC 的多谐波基本相位拟合约为 $7.474\,\mu\mathrm m$，相对极值法只改变约 $0.008\,\mu\mathrm m$，故消除弱多光束影响后的区间为
+\begin{equation}
+\boxed{d_{\mathrm{SiC,corr}}\approx7.47\text{--}7.48\,\mu\mathrm m}.
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\textwidth]{outputs/B题/Si_spectral_fit.png}
+\caption{Si 原始反射谱与单/多谐波拟合}
+\end{figure}
+
+\section{B 题可靠性与局限}
+
+SiC 两角度结果仅差约 $0.0014\,\mu\mathrm m$，构成很强的一致性证据。Si 两角度基本周期也一致，但 15° 数据的峰谷估计差较大，故给出更保守的不确定性。若实际掺杂浓度达到 $10^{19}\,\mathrm{cm^{-3}}$ 量级，应在 SiC 介电函数中加入 Drude 自由载流子项；附件未给掺杂浓度，不能同时可靠辨识厚度与全部载流子参数。
+
+\clearpage
+\part{C 题：NIPT 的时点选择与胎儿异常判定}
+
+\section{数据审计}
+
+男胎有 1082 条记录、267 名孕妇；女胎有 605 条记录、147 名孕妇，平均每人约 4 次检测。独立统计单位是孕妇，所有交叉验证、bootstrap 和训练--验证划分均按孕妇代码整体进行。
+
+孕周换算为连续周数，例如
+\begin{equation}
+11w+6=11+\frac{6}{7}.
+\end{equation}
+男胎 BMI 范围为 20.70--46.88，均值 32.29，样本明显偏向高 BMI 人群。
+
+\section{问题 1：Y 浓度混合效应模型}
+
+对 Y 浓度作 logit 变换：
+\begin{equation}
+Y^*_{ij}=\log\frac{Y_{ij}}{1-Y_{ij}}.
+\end{equation}
+建立随机截距模型
+\begin{equation}
+Y^*_{ij}=\beta_0+\beta_1W_{ij}+\beta_2W_{ij}^2
++\beta_3B_i+\beta_4W_{ij}B_i+b_i+\varepsilon_{ij},
+\end{equation}
+其中 $W$、$B$ 为标准化孕周和 BMI，$b_i\sim N(0,\sigma_b^2)$。孕周均值为 16.846 周、标准差 4.076 周；BMI 均值为 32.289、标准差 2.972。
+
+\begin{table}[H]
+\centering
+\caption{基础混合效应模型固定效应}
+\begin{tabular}{lrrl}
+\toprule
+变量 & 标准化系数 & $p$ 值 & 结论\\
+\midrule
+孕周 & 0.1668 & $<10^{-40}$ & 显著正相关\\
+孕周二次项 & 0.0428 & $5.80\times10^{-6}$ & 轻微非线性\\
+BMI & -0.0719 & 0.00250 & 显著负相关\\
+孕周$\times$BMI & 0.00843 & 0.336 & 不显著\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+随机截距标准差为 0.434，测量残差标准差为 0.261，说明孕妇间异质性不可忽略。加入年龄、身高、IVF、唯一比对读段数、比对率和 GC 后，AIC 从 836.33 降至 817.69；似然比检验为
+\begin{equation}
+\chi^2(6)=30.64,\qquad p=2.97\times10^{-5}.
+\end{equation}
+
+\section{问题 2：区间删失、BMI 分组与时点}
+
+真实达标时间只知道位于最后一次未达标和第一次达标之间：
+\begin{equation}
+T_i\in(L_i,U_i].
+\end{equation}
+267 名孕妇中，首次检测已达标（左删失）218 名，先未达标后达标（区间删失）42 名，末次仍未达标（右删失）7 名。直接把首次达标记录当精确时间会产生系统偏差。
+
+采用 log-normal AFT 模型：
+\begin{equation}
+\log T_i=\alpha_0+\alpha_1BMI_i^*+\sigma\epsilon_i,
+\qquad\epsilon_i\sim N(0,1).
+\end{equation}
+标准化 BMI 系数为 0.1192，因此 BMI 每增加 1，典型达标时间约乘以
+\begin{equation}
+\exp(0.1192/2.972)=1.041,
+\end{equation}
+即约延迟 4.1\%。
+
+在 2--4 个连续区间中搜索切点，并要求每组至少 35 人；BIC 最优结果如下。
+\begin{table}[H]
+\centering
+\caption{BMI 分组与 90\%/95\% 达标时点}
+\begin{tabular}{lrrrr}
+\toprule
+BMI 区间 & 人数 & 90\% 时点/周 & 换算 & 95\% 时点/周\\
+\midrule
+$[20.70,34.50)$ & 227 & 14.315 & 14 周 3 天 & 17.439\\
+$[34.50,46.88]$ & 40 & 20.403 & 20 周 3 天 & 24.854\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\resultbox{以“组内至少 90\% 已达标的最早时间”为透明风险准则，推荐
+\[
+\boxed{BMI<34.50:\ 14\text{周}3\text{天};\qquad
+BMI\ge34.50:\ 20\text{周}3\text{天}.}
+\]}
+
+由于 218 名孕妇首次观测时已经达标，模型对 10 周前分布依赖左删失外推；因此不把落在观测窗外的中位达标时间作为临床建议。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{outputs/C题/male_longitudinal_and_timing.png}
+\caption{男胎重复测量轨迹与区间删失 AFT 达标曲线}
+\end{figure}
+
+\subsection{检测误差敏感性}
+
+将 4\% 阈值上下移动 0.5 个百分点，得到：
+\begin{table}[H]
+\centering
+\caption{浓度阈值误差对 90\% 达标时点的影响}
+\begin{tabular}{ccc}
+\toprule
+阈值 & BMI$<34.50$ & BMI$\ge34.50$\\
+\midrule
+3.5\% & 12.660 周 & 18.058 周\\
+4.0\% & 14.315 周 & 20.403 周\\
+4.5\% & 16.527 周 & 22.687 周\\
+\bottomrule
+\end{tabular}
+\end{table}
+阈值误差可移动推荐时点约 2--2.4 周，是最重要的不确定性来源。
+
+\section{问题 3：多因素模型是否值得保留}
+
+在 BMI 分组 AFT 中加入年龄、身高和 IVF；不同时自由加入 BMI、身高和体重，以避免确定性共线。将附加变量固定在样本均值时：
+\begin{table}[H]
+\centering
+\caption{多因素模型的 90\% 达标时点}
+\begin{tabular}{lcc}
+\toprule
+BMI 区间 & 多因素时点 & 向上取整到天\\
+\midrule
+$[20.70,34.50)$ & 14.252 周 & 14 周 2 天\\
+$[34.50,46.88]$ & 20.002 周 & 20 周 1 天\\
+\bottomrule
+\end{tabular}
+\end{table}
+但
+\begin{equation}
+BIC_{\text{BMI 组}}=429.60,
+\qquad BIC_{\text{多因素}}=443.88.
+\end{equation}
+多因素模型 BIC 更差，时点仅改变约 0.06--0.40 周。附加因素虽能解释单次浓度波动，却没有稳定改善达标时间预测。
+
+\resultbox{问题 3 最终仍采用问题 2 的低自由度两组 BMI 模型，推荐 14 周 3 天和 20 周 3 天。年龄、身高和 IVF 只作个体风险提示。}
+
+\section{问题 4：女胎异常判定的可辨识性}
+
+女胎 AB 列共有 67 条异常记录、涉及 44 名孕妇：T13 为 23 条/18 人，T18 为 46 条/30 人，T21 为 13 条/12 人。然而女胎 AE 列 605 条出生结局全部为“健康”。因此 AB 只能作为检测输出标签，不是由真实出生结局确认的异常金标准。
+
+分别构建低维 Firth 修正逻辑模型：
+\begin{equation}
+\operatorname{logit}P(A_k=1)
+=\alpha_k+\beta_{1k}Z_k+\beta_{2k}Z_X+\beta_{3k}Q_k,
+\end{equation}
+其中 $Q_k$ 由相应染色体 GC 偏移、过滤率和重复率构成。严格按孕妇代码作 5 折分组交叉验证：
+
+\begin{table}[H]
+\centering
+\caption{女胎 AB 标签的患者级验证}
+\begin{tabular}{lrrrrr}
+\toprule
+标签 & ROC-AUC & PR-AUC & 平衡准确率 & 灵敏度 & 特异度\\
+\midrule
+T13 & 0.577 & 0.177 & 0.545 & 0.391 & 0.699\\
+T18 & 0.579 & 0.102 & 0.587 & 0.565 & 0.608\\
+T21 & 0.543 & 0.175 & 0.451 & 0.231 & 0.671\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+三个模型均接近随机水平，T21 更只有 12 名阳性孕妇。增加随机森林、boosting 或神经网络不能创造数据中不存在的信息，只会扩大过拟合。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.66\textwidth]{outputs/C题/female_group_cv_roc.png}
+\caption{女胎 AB 标签按孕妇分组交叉验证 ROC}
+\end{figure}
+
+可执行方法只能是三级保守流程：
+\begin{enumerate}
+  \item \textbf{质控拒绝层：}GC 超出 40\%--60\%、有效读段不足、比对率异常或过滤率/重复率过高时输出“建议复检”。
+  \item \textbf{统计筛查层：}质控合格后分别检查 13、18、21 号染色体 Z 值；$|Z_k|\ge3$ 仅作为复核警戒线，不作确诊。
+  \item \textbf{临床确认层：}警戒样本必须用独立检测或侵入性诊断确认。
+\end{enumerate}
+
+\resultbox{附件不足以建立经真实结局验证的女胎异常诊断器，只能建立质控与复核规则。若强制以 AB 为目标，应如实报告患者级 AUC 仅 0.54--0.58。}
+
+\section{总论与模型边界}
+
+两题的共同原则是“有效独立样本量决定模型自由度”。B 题虽然每条光谱有 7469 个点，但它们构成强相关曲线，厚度应由物理相位的少量参数识别；C 题虽然有 1687 条记录，真正独立的只有 414 名孕妇，必须使用重复测量、删失模型和患者级验证。本文所有主结论均来自低维、可解释模型；复杂模型只有在信息准则或患者级验证确有改善时才允许保留。
+
+\section*{主要参考文献}
+\addcontentsline{toc}{section}{主要参考文献}
+\begin{enumerate}
+  \item Edwards, D. F. and Ochoa, E. Infrared refractive index of silicon. \emph{Applied Optics}, 19:4130--4131, 1980. \url{https://doi.org/10.1364/AO.19.004130}
+  \item Tang, X. et al. Thickness determination of 4H-SiC epitaxial films by infrared reflectance, 2009. \href{https://www.researchgate.net/publication/224106099_Thickness_determination_of_4H-SiC_Epitaxial_Films_by_Infrared_Reflectance}{ResearchGate publication page}.
+  \item 2025 年高教社杯全国大学生数学建模竞赛 B、C 题题面及附件。
+\end{enumerate}
+
+\end{document}
