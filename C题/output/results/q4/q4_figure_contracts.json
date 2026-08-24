@@ -1,0 +1,102 @@
+{
+  "raw_q4_label_distribution": {
+    "type": "raw",
+    "claim": "AB标签极度不平衡",
+    "data": "q4_profile_input.csv",
+    "statistic": "记录计数与占比",
+    "size_in": [
+      6.3,
+      3.9
+    ]
+  },
+  "raw_q4_zscore_distribution": {
+    "type": "raw",
+    "claim": "固定Z阈值与AB标签分离有限",
+    "data": "q4_profile_input.csv",
+    "statistic": "箱线图与全部散点",
+    "size_in": [
+      6.3,
+      3.1
+    ]
+  },
+  "raw_q4_quality_relationships": {
+    "type": "raw",
+    "claim": "测序指标与Z值存在相关结构",
+    "data": "q4_profile_input.csv",
+    "statistic": "Pearson相关",
+    "size_in": [
+      6.3,
+      4.7
+    ]
+  },
+  "process_q4_fold_balance": {
+    "type": "process",
+    "claim": "四折均覆盖少数类患者",
+    "data": "q4_fold_audit.csv",
+    "statistic": "患者计数",
+    "size_in": [
+      6.3,
+      3.1
+    ]
+  },
+  "process_q4_model_selection": {
+    "type": "process",
+    "claim": "复杂度胜负随标签和折变化",
+    "data": "q4_model_selection.csv",
+    "statistic": "内层PR-AUC",
+    "size_in": [
+      6.3,
+      2.8
+    ]
+  },
+  "process_q4_threshold_tradeoff": {
+    "type": "process",
+    "claim": "高灵敏度阈值牺牲特异度",
+    "data": "q4_threshold_sensitivity.csv",
+    "statistic": "灵敏度/特异度/F2",
+    "size_in": [
+      6.3,
+      3.9
+    ]
+  },
+  "result_q4_pr_curves": {
+    "type": "result",
+    "claim": "T18与任一异常排序能力最强",
+    "data": "q4_outer_predictions.csv",
+    "statistic": "外层OOF PR曲线与AP",
+    "size_in": [
+      6.3,
+      3.9
+    ]
+  },
+  "result_q4_metrics_comparison": {
+    "type": "result",
+    "claim": "多变量模型总体优于固定Z规则",
+    "data": "q4_outer_metrics.csv",
+    "statistic": "四折均值",
+    "size_in": [
+      6.3,
+      3.1
+    ]
+  },
+  "result_q4_feature_importance": {
+    "type": "result",
+    "claim": "质量、GC和BMI共同贡献",
+    "data": "q4_feature_importance.csv",
+    "statistic": "12个模型均值与SD",
+    "size_in": [
+      6.3,
+      4.5
+    ]
+  },
+  "result_q4_calibration": {
+    "type": "result",
+    "claim": "概率校准质量存在标签差异",
+    "data": "q4_outer_predictions.csv",
+    "statistic": "5等频箱与Brier",
+    "size_in": [
+      6.3,
+      3.9
+    ]
+  }
+}

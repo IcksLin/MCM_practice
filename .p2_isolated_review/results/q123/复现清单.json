@@ -1,0 +1,327 @@
+{
+  "schema_version": 1,
+  "scope": "C题问题1—3精简工程的编程阶段，不含Word排版产物",
+  "input": {
+    "path": "C题/附件.xlsx",
+    "sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+    "read_only": true
+  },
+  "random_seeds": {
+    "q1": "无随机抽样",
+    "q2": 2025,
+    "q3": 20260824
+  },
+  "commands": [
+    "E:\\anaconda\\python.exe C题\\question123\\run_q123.py"
+  ],
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "scipy": "1.15.3",
+      "statsmodels": "0.14.4",
+      "scikit-learn": "1.6.1",
+      "matplotlib": "3.10.0",
+      "xgboost": null,
+      "openpyxl": "3.1.5"
+    }
+  },
+  "code": [
+    {
+      "path": "question1/solve_q1.py",
+      "bytes": 7256,
+      "sha256": "263c3c1ae7022da6245d98e112790357fb7a823c00be5c1ba31aa1ed4b1828cc"
+    },
+    {
+      "path": "question123/build_manifest.py",
+      "bytes": 2480,
+      "sha256": "05b18ca3705481696fabb3958be4b9ed13b41aff625124cc9b59d46b197fa2a4"
+    },
+    {
+      "path": "question123/plot_q123.py",
+      "bytes": 10513,
+      "sha256": "e60c08ca05aa39f0263f2c95d2be26d0a1226f80a72d092f9b6b7dad966e092c"
+    },
+    {
+      "path": "question123/run_q123.py",
+      "bytes": 2309,
+      "sha256": "073eafe9c0546435cf7e4c88c2a8381d2d4f8f8842f18e8b04802a605475bcf6"
+    },
+    {
+      "path": "question2/validate_q2_policy.py",
+      "bytes": 2338,
+      "sha256": "798d8fb5a2d1228171619ecda43e4a616ee5ec3ddf3cfc25aaa2fb9d7bc837a8"
+    },
+    {
+      "path": "question3/nested_q3_audit.py",
+      "bytes": 2797,
+      "sha256": "4762de437c2fb015f9526bb3f5e1563d50d4a08288f226321b264f12b2fa8923"
+    }
+  ],
+  "results": [
+    {
+      "path": "results/q1/q1_model_coefficients.csv",
+      "bytes": 2040,
+      "sha256": "60c85aa94272c6a311728cb79b04ab46e370cb4d0b7d0842b7153dec8939aa42"
+    },
+    {
+      "path": "results/q1/q1_model_summary.json",
+      "bytes": 1931,
+      "sha256": "39a70723fb53bff86497657804b92fdcb9ef7c9046241fcda162f0e02a018ce5"
+    },
+    {
+      "path": "results/q1/q1_record_fit.csv",
+      "bytes": 99550,
+      "sha256": "0e710eaecf96bab8a42ea8b41d3815ed31d1e12dff3c62b84df5c2af7c553323"
+    },
+    {
+      "path": "results/q2/README_成果导航.md",
+      "bytes": 822,
+      "sha256": "ea13c5639355c388d0d69db07f9fd61fcd24adb82bc87d33569da0ab874433ef"
+    },
+    {
+      "path": "results/q2/参数AFT基线_冻结.json",
+      "bytes": 285,
+      "sha256": "7efde608ac0e450d07e883308b6eac5cf991a2c3123b7e3af809d7bdbb06578b"
+    },
+    {
+      "path": "results/q2/男胎患者级精简数据.csv",
+      "bytes": 28366,
+      "sha256": "476274aa38b2fff956ee0330f2d4992f0357f8af63b87d6f0c1326e93b30d6e3"
+    },
+    {
+      "path": "results/q2/问题2方法演进摘要.csv",
+      "bytes": 882,
+      "sha256": "98d863a0407e8b84f5b6b7ef054811a6acfcc73a3477e348f7d2aaf24af3b510"
+    },
+    {
+      "path": "results/q2/问题2最终建议表.csv",
+      "bytes": 455,
+      "sha256": "40fd33ad112f618a80ded136fb061c8ea0b7bc2369544b2fa7d0592bd3297c64"
+    },
+    {
+      "path": "results/q2/问题2核心方案对比.csv",
+      "bytes": 917,
+      "sha256": "8fd3ac9619acb9b25beaf53d80b4cf4bad47e058aa2ffced71dd10d5062f42cf"
+    },
+    {
+      "path": "results/q3/BMI组内个体时点异质性.csv",
+      "bytes": 277,
+      "sha256": "ea27d84a009c16073a7cf1ffec04bf789898f9fa3f750229f2595c2fa1856a06"
+    },
+    {
+      "path": "results/q3/两组固定切点外层汇总.csv",
+      "bytes": 7821,
+      "sha256": "a281d3235216aaa26d35735c33db68336572eea783c17dd130a06d7094313605"
+    },
+    {
+      "path": "results/q3/可靠性与最小组人数敏感性.csv",
+      "bytes": 14299,
+      "sha256": "75d43b0d2c40a9984ded322487527b84389372073a530c0bf00d41ae7fbfc366"
+    },
+    {
+      "path": "results/q3/固定候选Bootstrap汇总.csv",
+      "bytes": 589,
+      "sha256": "37bce9040272007ebab63b8dcc7c5d9f952fb33db3f524a81727ddd67b2befa7"
+    },
+    {
+      "path": "results/q3/多因素置换重要性_汇总.csv",
+      "bytes": 440,
+      "sha256": "5217145abd23f926d4fe768ce0860a56bf390abfaab960a2ee01a16abc804e59"
+    },
+    {
+      "path": "results/q3/最终政策外层4折审计.csv",
+      "bytes": 1300,
+      "sha256": "0dba0d5b5b97092ec55a4ace836e95a5be7cc7d1d195eb1d9fd31c166460e8cb"
+    },
+    {
+      "path": "results/q3/检测误差敏感性汇总.csv",
+      "bytes": 4069,
+      "sha256": "b871fd50aba985022faf6358bd29c3a9b11c5d4a81d58accc2b5a84640269db0"
+    },
+    {
+      "path": "results/q3/模型外层测试对比.csv",
+      "bytes": 376,
+      "sha256": "42b8631847a8fa7f2e893e36ae339ebefc45b4c4fda66cea58bf0ec22db4fa11"
+    },
+    {
+      "path": "results/q3/组数外层验证比较.csv",
+      "bytes": 746,
+      "sha256": "8a0e432b7ca9640a85fffe581bd5fd4652dac31bdd73d8170af6f8261d3f69c0"
+    },
+    {
+      "path": "results/q3/问题3外层逐折分组政策_冻结.csv",
+      "bytes": 25069,
+      "sha256": "a567ba748fe6c68e18c13203992505a2e549d4f0b220f91d1be9c09821d0e530"
+    },
+    {
+      "path": "results/q3/问题3嵌套外层独立审计.csv",
+      "bytes": 622,
+      "sha256": "97a0c895a66eab0e87deb3114574ead46183c02f11023d50b7b792ea19c0947d"
+    },
+    {
+      "path": "results/q3/问题3嵌套外层独立审计.json",
+      "bytes": 638,
+      "sha256": "666354774bdc0dba8cb6cf4ce3873b3d29527e3e9df08923ecb23c83ef1b4280"
+    },
+    {
+      "path": "results/q3/问题3最终建议表_v2.csv",
+      "bytes": 138,
+      "sha256": "da9fa655e03a69d525520c0b6b9625f89f743af7f1b90cb6edb2c2df60cb7226"
+    },
+    {
+      "path": "results/q3/问题3最终结论_v2.json",
+      "bytes": 2025,
+      "sha256": "da478f30bfd5b12296564e2ec63141faa55520ec8a59f7a4d93d6a8501e557e6"
+    },
+    {
+      "path": "results/q3/问题3最终验证结论.json",
+      "bytes": 3793,
+      "sha256": "2a71524fa55a6733819cfc214ab841a67dd44cca27e6c3a1395d19287e6d067b"
+    }
+  ],
+  "figures": [
+    {
+      "path": "figures/q123/_qa/process_q1_diagnostics_grayscale.png",
+      "bytes": 161484,
+      "sha256": "108bfbd9efb0d4669919db6fa03341c262c2b3ef97078189f16ebfa10c0a088d"
+    },
+    {
+      "path": "figures/q123/_qa/process_q2_policy_stability_grayscale.png",
+      "bytes": 68360,
+      "sha256": "b7317a9c6134e12c6d6a0b2b1278830b23d1184dc98498e481135ac5e0b498d8"
+    },
+    {
+      "path": "figures/q123/_qa/process_q3_group_selection_grayscale.png",
+      "bytes": 99755,
+      "sha256": "77b23fdf031f616a3095737ecdf4031bdcf77aab6270266b0141aee8f8d2b9e2"
+    },
+    {
+      "path": "figures/q123/_qa/raw_q1_y_week_bmi_grayscale.png",
+      "bytes": 255477,
+      "sha256": "489c5f6a98ed1d88c2f857ee053080027326de01371e21e49b09be4596ab67f1"
+    },
+    {
+      "path": "figures/q123/_qa/raw_q2_bmi_distribution_grayscale.png",
+      "bytes": 56758,
+      "sha256": "4520a553cabded1d7b3619b53d48040ed10d96275e0617e4666fd76a21a7a6d5"
+    },
+    {
+      "path": "figures/q123/_qa/raw_q3_feature_evidence_grayscale.png",
+      "bytes": 87448,
+      "sha256": "3829667bdac869eb62d848c285d987c58d7b04de7cb0cea8855735563a006c08"
+    },
+    {
+      "path": "figures/q123/_qa/result_q1_effects_grayscale.png",
+      "bytes": 54480,
+      "sha256": "3f1b7b2d03a3c850d7bd7777cab4e77cdd8f2bcfd811e16ecd38b0b145413b06"
+    },
+    {
+      "path": "figures/q123/_qa/result_q2_tradeoff_grayscale.png",
+      "bytes": 66824,
+      "sha256": "19769dcd1f943e55adc819746a1fb5260b15e82dda717d5fb78f1e6bc1756531"
+    },
+    {
+      "path": "figures/q123/_qa/result_q3_final_policy_grayscale.png",
+      "bytes": 100180,
+      "sha256": "e26858096c4e4b7db9009d5a4fa1076522dcbd0f7d70671674185046cb2d57e0"
+    },
+    {
+      "path": "figures/q123/process_q1_diagnostics.png",
+      "bytes": 175422,
+      "sha256": "e89c97795b31c16918f1206c1e166ce8da7677993b577a3d79b9ed5b66c4e630"
+    },
+    {
+      "path": "figures/q123/process_q1_diagnostics.svg",
+      "bytes": 253989,
+      "sha256": "38ab198886be3d92a65b33ec295a16ff1039e64f2758bb1af5bd5022181e9660"
+    },
+    {
+      "path": "figures/q123/process_q2_policy_stability.png",
+      "bytes": 68998,
+      "sha256": "e49d504c7d84623a29134a64c14475ce0b53052e59db57cb4398f5c595be97e4"
+    },
+    {
+      "path": "figures/q123/process_q2_policy_stability.svg",
+      "bytes": 11519,
+      "sha256": "2fde808905c1f848b337508a8871e967f12a909408295b00cff80400ead9c0a3"
+    },
+    {
+      "path": "figures/q123/process_q3_group_selection.png",
+      "bytes": 100302,
+      "sha256": "de59121e4f59ead74bf1d24dfeb28570443582d8df7d1a0b27a9b7a2b5f99f9b"
+    },
+    {
+      "path": "figures/q123/process_q3_group_selection.svg",
+      "bytes": 21252,
+      "sha256": "a916c9e1cca68ad01265b739c302931436ef917467e445c4ac860fa01fc9f10e"
+    },
+    {
+      "path": "figures/q123/q123_figure_contracts.json",
+      "bytes": 1541,
+      "sha256": "907c5bc17a1b9003457cca954a0d98aafe73041469fd3872d86fa856b54b80dc"
+    },
+    {
+      "path": "figures/q123/raw_q1_y_week_bmi.png",
+      "bytes": 294696,
+      "sha256": "8775b5a054246d38dc2102e1f046b648dc5f92807c4790098bdcbebb84e5a43e"
+    },
+    {
+      "path": "figures/q123/raw_q1_y_week_bmi.svg",
+      "bytes": 192094,
+      "sha256": "293046783a556ba7e6074845050f3da21d6580940d3d80cf5a7edd5f41c48478"
+    },
+    {
+      "path": "figures/q123/raw_q2_bmi_distribution.png",
+      "bytes": 56877,
+      "sha256": "26a48cb8cab0c487a2960c6935048f93512e784d2d2e517da58b45301c690ca0"
+    },
+    {
+      "path": "figures/q123/raw_q2_bmi_distribution.svg",
+      "bytes": 16358,
+      "sha256": "ad6091d24694649e1c6a9407cb8022fbfff2eb537552e4402d431566c675b9aa"
+    },
+    {
+      "path": "figures/q123/raw_q3_feature_evidence.png",
+      "bytes": 88009,
+      "sha256": "1f902c40f8967e4df7005cad1fb8a9041c1dbf65a50df20249e59c1c2a2578e7"
+    },
+    {
+      "path": "figures/q123/raw_q3_feature_evidence.svg",
+      "bytes": 30032,
+      "sha256": "9cbf5923e61a01aa10e288a6a82f6e60ad22494a9892204239e74ed2d581bf18"
+    },
+    {
+      "path": "figures/q123/result_q1_effects.png",
+      "bytes": 54538,
+      "sha256": "e602144cc9c6c32d6e0cdc17a5006f9d62cad593eacff13ff036faf461cd45ff"
+    },
+    {
+      "path": "figures/q123/result_q1_effects.svg",
+      "bytes": 10809,
+      "sha256": "860c051ed419547e4f5a88fb16a59b935b791af4f72db2bd578153cb70d5b174"
+    },
+    {
+      "path": "figures/q123/result_q2_tradeoff.png",
+      "bytes": 67069,
+      "sha256": "dc957be6dacc585b806e9c86971451889b31956153748438d431b81a0a19dd37"
+    },
+    {
+      "path": "figures/q123/result_q2_tradeoff.svg",
+      "bytes": 10351,
+      "sha256": "ad160ea07ac969ffb41e85e0a41b096d8bb7e4b650735239c28d786f8b8b4e2f"
+    },
+    {
+      "path": "figures/q123/result_q3_final_policy.png",
+      "bytes": 100625,
+      "sha256": "f9ea097e15fdf75b3d9c2491a96a10cdd5923bbb69eccc86cae132ef3fd39c9d"
+    },
+    {
+      "path": "figures/q123/result_q3_final_policy.svg",
+      "bytes": 19684,
+      "sha256": "85154d2a089d8fda4121248ef204afc5939332490bfe1818de9b89fec83595b2"
+    }
+  ]
+}

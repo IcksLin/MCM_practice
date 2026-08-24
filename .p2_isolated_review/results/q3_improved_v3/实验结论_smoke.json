@@ -1,0 +1,19 @@
+{
+  "mode": "smoke",
+  "outer_folds": 1,
+  "group_search_rule": "1..floor(n_development/30)",
+  "selected_group_counts": {
+    "1": 1
+  },
+  "mean_safe_folds": 1,
+  "lcb_safe_folds": 0,
+  "mean_test_week": 19.0,
+  "mean_test_readiness": 0.9598200776794458,
+  "seed": 20260825,
+  "outer_rounds_from_development_inner_early_stopping": [
+    150,
+    64,
+    853,
+    113
+  ]
+}

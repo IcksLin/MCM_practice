@@ -1,0 +1,47 @@
+{
+  "mode": "smoke",
+  "records": 1082,
+  "patients": 267,
+  "model_converged": true,
+  "model_formula": "Y_logit ~ week_c + week_c2 + bmi_c + week_c:bmi_c",
+  "random_intercept_variance": 0.18838802564879845,
+  "random_intercept_degenerate": false,
+  "random_intercept_mean": 9.03480370002075e-15,
+  "random_intercept_sd": 0.41531779920424294,
+  "standardized_residual_abs_gt_3_rate": 0.013863216266173753,
+  "residual_fitted_correlation": 0.16019037085023924,
+  "residual_week_correlation": 1.8529828727716705e-15,
+  "bootstrap_repeats": 10,
+  "bootstrap_valid": 10,
+  "bootstrap_valid_rate": 1.0,
+  "key_intervals": [
+    {
+      "变量": "week_c",
+      "原模型系数": 0.16675709147418002,
+      "Bootstrap下限": 0.1448690522576796,
+      "Bootstrap中位数": 0.1649566787706921,
+      "Bootstrap上限": 0.18716534277795416
+    },
+    {
+      "变量": "week_c2",
+      "原模型系数": 0.04276079010202063,
+      "Bootstrap下限": 0.028270014726565037,
+      "Bootstrap中位数": 0.042537676097487806,
+      "Bootstrap上限": 0.05450996789586944
+    },
+    {
+      "变量": "bmi_c",
+      "原模型系数": -0.07191396055746478,
+      "Bootstrap下限": -0.11852247153868246,
+      "Bootstrap中位数": -0.08299129203599107,
+      "Bootstrap上限": -0.056722254175985594
+    },
+    {
+      "变量": "week_c:bmi_c",
+      "原模型系数": 0.00843099538089915,
+      "Bootstrap下限": -0.006541906664987438,
+      "Bootstrap中位数": 0.008492130164379838,
+      "Bootstrap上限": 0.03084588389707395
+    }
+  ]
+}

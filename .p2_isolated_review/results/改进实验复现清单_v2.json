@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "scope": "C题改进实验v2；不覆盖原实验",
+  "input": {
+    "path": "C题/附件.xlsx",
+    "sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+    "read_only": true
+  },
+  "commands": [
+    "E:\\anaconda\\envs\\yolov_env\\python.exe question3/extended_group_search_v3.py",
+    "E:\\anaconda\\envs\\yolov_env\\python.exe question4/patient_triage_v6.py",
+    "E:\\anaconda\\python.exe question2/policy_sensitivity_v11.py",
+    "E:\\anaconda\\python.exe question1/diagnostics_v2.py --repeats 200"
+  ],
+  "unique_reproduction_command": "E:\\anaconda\\python.exe question123\\run_improvements_v2.py",
+  "runtime": {
+    "launcher_python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "scripts": [
+    {
+      "path": "question3/extended_group_search_v3.py",
+      "bytes": 11585,
+      "sha256": "4ba23b560a25462b73f94438521af4521b9eb1fce04aa00dfaf8e1a09b92d241"
+    },
+    {
+      "path": "question4/patient_triage_v6.py",
+      "bytes": 8298,
+      "sha256": "8ef4cfb9e48459b73f54db64f15af5e1fa9d954c9002e20c4e0b6234101d3447"
+    },
+    {
+      "path": "question2/policy_sensitivity_v11.py",
+      "bytes": 4547,
+      "sha256": "514ac87f4f1abbd85065d26cec68fb367e832f0af2e243409050a38708455f9c"
+    },
+    {
+      "path": "question1/diagnostics_v2.py",
+      "bytes": 5281,
+      "sha256": "88ab8494f9d30904dcd90392f838b58489aa9aa76045d8776b4221ca6da66b99"
+    }
+  ],
+  "results": [
+    {
+      "path": "results\\q3_improved_v3\\严格嵌套外层审计_full.csv",
+      "bytes": 752,
+      "sha256": "a5794d9bfbd98446a6b0bddcb24499cbf20fd3af61c2517449b831180389d336"
+    },
+    {
+      "path": "results\\q3_improved_v3\\全部可行组数开发比较_full.csv",
+      "bytes": 2056,
+      "sha256": "cbaa25907be13aabb3ffe998b08ffa347ea1a56e9e20dbcc0bb3c27096144362"
+    },
+    {
+      "path": "results\\q3_improved_v3\\实验结论_full.json",
+      "bytes": 418,
+      "sha256": "d2f91bf9005933337d0c146a5f4cf2c4488f0061297d7a10023578ebdfc437a3"
+    },
+    {
+      "path": "results\\q4_improved_v6\\候选规则开发折比较.csv",
+      "bytes": 2322,
+      "sha256": "24c4031c3ffbc879765f39504a6ece3a53ea04beff9bccec801e05bd478a0903"
+    },
+    {
+      "path": "results\\q4_improved_v6\\外层患者级审计.csv",
+      "bytes": 619,
+      "sha256": "c1659c0bbd8877c3cd079128b31f76ff6bd2d68f64067009629382fad9ec467f"
+    },
+    {
+      "path": "results\\q4_improved_v6\\实验结论.json",
+      "bytes": 1101,
+      "sha256": "f06da6288b5ec23527c4404c525bbb1e5b720d867f5598c785d28da9b0c4661f"
+    },
+    {
+      "path": "results\\q4_improved_v6\\患者级最终分流.csv",
+      "bytes": 10257,
+      "sha256": "224c5cf8ed798300cd3a26b861f9eeba0c3138018fd1dbff802b26b35d575f6b"
+    },
+    {
+      "path": "results\\q2_improved_v11\\Bootstrap区间内切点平台.csv",
+      "bytes": 1950,
+      "sha256": "c634c4dbcf7797d73cd0b55ae9c51d0e4ff5bb3f35c549782bf94dedd5cf7b44"
+    },
+    {
+      "path": "results\\q2_improved_v11\\固定网格切点安全平台.csv",
+      "bytes": 2257,
+      "sha256": "f2b18c8c14ae3c2b1533ffd84ef5fbc4f1153ccf259c2edcde3ab278be7e79c3"
+    },
+    {
+      "path": "results\\q2_improved_v11\\安全门槛敏感性.csv",
+      "bytes": 3530,
+      "sha256": "28e0cb232d2aa4962edaea038ea3c04e8767a2c7d29cad700aa140d4451620b3"
+    },
+    {
+      "path": "results\\q2_improved_v11\\实验结论.json",
+      "bytes": 941,
+      "sha256": "191041e4bf574b6f53f658037560286edefaa55c8651ef71d5ec12603e356551"
+    },
+    {
+      "path": "results\\q2_improved_v11\\风险权重单纯形.csv",
+      "bytes": 271412,
+      "sha256": "31d66d0e78b714825914dbf54dbf1470807e870ccf93558a54d0879818b8da3b"
+    },
+    {
+      "path": "results\\q1_improved_v2\\关键系数Bootstrap区间_b200.csv",
+      "bytes": 444,
+      "sha256": "7ea480ab27e46dfc40569a2c89f915fca9c717fd6dab6cb62820f034457d862c"
+    },
+    {
+      "path": "results\\q1_improved_v2\\实验结论_b200.json",
+      "bytes": 1586,
+      "sha256": "a9acdf6afc15315640a6f9e89e28b81c797b19ee080ba21e78747d376ce20fe1"
+    },
+    {
+      "path": "results\\q1_improved_v2\\患者Bootstrap原始结果_b200.csv",
+      "bytes": 23574,
+      "sha256": "9ea4d96a1f631d434f253c3a312b63f606e8fe2f5c31233d4c86f5b27b6b8781"
+    },
+    {
+      "path": "results\\q1_improved_v2\\残差诊断_b200.csv",
+      "bytes": 99853,
+      "sha256": "66b052b88ab5e05369ebc94154d4216a7cfec697378c99d538defbc89ae7d5ce"
+    },
+    {
+      "path": "results\\q1_improved_v2\\随机截距分布_b200.csv",
+      "bytes": 6971,
+      "sha256": "6da990398954ebdc3debbc63474ca83caf36f770c497641124b8eb44403b0f09"
+    }
+  ]
+}

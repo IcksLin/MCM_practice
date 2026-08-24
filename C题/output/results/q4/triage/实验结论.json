@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source": "results\\q4_outer_predictions.csv",
+  "patients": 147,
+  "patient_target": "同一孕妇任一记录出现附件筛查异常标签（记录y_any最大值）",
+  "patients_with_inconsistent_record_labels": 43,
+  "selection": "每个外折仅用其他三个外折的OOF患者选择规则",
+  "feasibility_constraints": {
+    "triage_sensitivity_min": 0.85,
+    "retest_rate_max": 0.55
+  },
+  "selected_rules": {
+    "p30_r15": 4
+  },
+  "pooled_outer_results": {
+    "患者数": 147,
+    "异常患者数": 44,
+    "直接阳性数": 40,
+    "复测数": 71,
+    "阴性数": 36,
+    "直接阳性灵敏度": 0.5,
+    "直接阳性特异度": 0.8252427184466019,
+    "直接阳性PPV": 0.55,
+    "三分流覆盖灵敏度": 0.9090909090909091,
+    "复测率": 0.48299319727891155,
+    "阴性漏诊数": 4
+  },
+  "t21_policy": "T21单独阳性只进入复测，不直接判为稳定阳性",
+  "interpretation": "患者级内部交叉拟合三分流；目标是附件筛查标签曾阳性，不代表真实疾病或临床确诊性能"
+}

@@ -34,7 +34,7 @@ from sklearn.preprocessing import StandardScaler
 warnings.filterwarnings("ignore", category=FutureWarning)
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "C题" / "C题" / "附件.xlsx"
-OUT = ROOT / "outputs" / "C题" / "机器学习扩展"
+OUT = ROOT / "C题" / "output" / "archive" / "legacy_analysis" / "机器学习扩展"
 OUT.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update(

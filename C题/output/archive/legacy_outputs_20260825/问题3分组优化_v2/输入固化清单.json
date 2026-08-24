@@ -1,0 +1,31 @@
+{
+  "attachment_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+  "fold_file_sha256": "c1c0e5916405040c2e8b9da7b91571011da28091898de32008f7d9b5f428001a",
+  "outer_oof_sha256": "f9cbac1e6cb1c9d5222d3c6496473c3a3eac099d93ad967b138738490f0741a2",
+  "tree_results_sha256": "20af8834cbfa24145f0f762290fe2dcb2ee5c2efa24f5c751d981a8fc7cd0509",
+  "women": 267,
+  "outer_fold_counts": {
+    "0": 67,
+    "1": 67,
+    "2": 67,
+    "3": 66
+  },
+  "integer_weeks": [
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    14.0,
+    15.0,
+    16.0,
+    17.0,
+    18.0,
+    19.0,
+    20.0,
+    21.0,
+    22.0,
+    23.0,
+    24.0,
+    25.0
+  ]
+}

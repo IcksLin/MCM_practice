@@ -1,0 +1,197 @@
+{
+  "task": "C题问题4女胎非整倍体判定",
+  "runtime": {
+    "python": "3.9.25 (main, Nov  3 2025, 22:44:01) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "dependencies": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.2",
+    "scikit_learn": "1.6.1",
+    "xgboost": "2.1.4",
+    "matplotlib": "3.9.4"
+  },
+  "fixed_parameters": {
+    "seed": 20250824,
+    "outer_folds": 4,
+    "inner_folds": 3,
+    "split_search_repeats": 2000,
+    "bootstrap_repeats": 2000
+  },
+  "commands": [
+    "E:\\anaconda\\envs\\yolov_env\\python.exe question4\\run_q4_full.py",
+    "E:\\anaconda\\envs\\yolov_env\\python.exe question4\\plot_q4.py",
+    "E:\\anaconda\\envs\\yolov_env\\python.exe question4\\build_manifest.py"
+  ],
+  "working_directory": "D:\\时光归墟\\赛事\\数模\\practice\\C题",
+  "files": {
+    "C题\\附件.xlsx": {
+      "sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+      "bytes": 481734
+    },
+    "question4\\build_manifest.py": {
+      "sha256": "e0f8f616ef8fd487d7b587e77edf2e26c953edf2a8cf6e6d0b64ebdd986f0142",
+      "bytes": 2127
+    },
+    "question4\\build_q4_report.py": {
+      "sha256": "756c2defdca9bfccba2f57d85a03386150bc2d41e462441901607d4ae759baee",
+      "bytes": 28021
+    },
+    "question4\\plot_q4.py": {
+      "sha256": "396e1495d8cf0797d540a25d4251a56e38bc5c428275f5db13930e03577a2ccf",
+      "bytes": 13546
+    },
+    "question4\\render_pdf_pages.py": {
+      "sha256": "27a879112908c248446c0e496e193fa808ed2ddfa3fe0f541c0ee5bde7684c71",
+      "bytes": 755
+    },
+    "question4\\run_q4_full.py": {
+      "sha256": "068468d0ffffce794caf7036835c31e1504eee2d75c2ed0c20c8e36dfa0ae9f9",
+      "bytes": 20147
+    },
+    "question4\\solve_q4.py": {
+      "sha256": "ff33dc922818b8ab1d66b5883c38043e4c52e94344843b461a14bbd8ddac3c54",
+      "bytes": 14152
+    },
+    "results\\q4_bootstrap_raw.csv": {
+      "sha256": "1fa2ea2d36ba5c7a394c6b5d7b1d594107310933fbba514cad0458d17cca0764",
+      "bytes": 3399553
+    },
+    "results\\q4_bootstrap_summary.csv": {
+      "sha256": "0862bc3e917079c19c6a0c71fdbe123d3f42eff3cbc61e223af617ef53fe6dd5",
+      "bytes": 3300
+    },
+    "results\\q4_feature_importance.csv": {
+      "sha256": "13bf44b011b42c21bb63dc0ae9e769280015f129051e9e0f2671029fa43e2553",
+      "bytes": 21219
+    },
+    "results\\q4_figure_contracts.json": {
+      "sha256": "e318645300f2d793ac517c73c86357b796efcbb16386269a739909bf331556dd",
+      "bytes": 2415
+    },
+    "results\\q4_final_method.json": {
+      "sha256": "3d5c29fac3ffe64c39f958dde661298edfb33f41afc1357bfd5726d15841f807",
+      "bytes": 1804
+    },
+    "results\\q4_final_recommendations.csv": {
+      "sha256": "b25f6b040763c7c6bfdd617f70f7c8dd7880460f795e925c9038eb160c8573f7",
+      "bytes": 95829
+    },
+    "results\\q4_fold_audit.csv": {
+      "sha256": "54c22b42e1b7cb3d334a2995b8b71edf6fa4417605ed18a3fdf0ed1d779c70d4",
+      "bytes": 1616
+    },
+    "results\\q4_metrics_summary.csv": {
+      "sha256": "138fd1436739c260e84f78359b7ad1ca21e72e3c52211f00f23b3ef64a15255b",
+      "bytes": 1375
+    },
+    "results\\q4_model_selection.csv": {
+      "sha256": "73c8f94340b3fde5d0b8fa56e6657bf9d39f8a55ef7ecffb77efdeef95fe9642",
+      "bytes": 3760
+    },
+    "results\\q4_outer_metrics.csv": {
+      "sha256": "169b8a5fe56a3f750687880dc9ab60579cc3846fb5c639a2e733e984e2b2071a",
+      "bytes": 8531
+    },
+    "results\\q4_outer_predictions.csv": {
+      "sha256": "2973ad3e049a2bcaf1632d80ab70d0341d7cf765c075d7c4ea2a49eae7840905",
+      "bytes": 224556
+    },
+    "results\\q4_profile_input.csv": {
+      "sha256": "84dfb69c2c40d66bc2a1fefe1ae714142dc62f956ab938cba95c3ed3fde1e4f3",
+      "bytes": 81031
+    },
+    "results\\q4_smoke_result.json": {
+      "sha256": "f7cc2e6c2e8570478120b6487608cff38fb6fbb073f28796bc69013f40236afb",
+      "bytes": 1013
+    },
+    "results\\q4_threshold_sensitivity.csv": {
+      "sha256": "82e1d457898fcf549a5f3c711a91dcb304fac902d7ed45b69bc130b76ffdb653",
+      "bytes": 463569
+    },
+    "figures\\process_q4_fold_balance.png": {
+      "sha256": "9ba39c7f76458374dfb1d63052a8298e714a35bcf01a02d40e2e4dfa4567827a",
+      "bytes": 64729
+    },
+    "figures\\process_q4_fold_balance.svg": {
+      "sha256": "cd8d56aa23277e01f8fbcf1918af2b4fe8abca8ee9a75cb99e9a2d2216b8214b",
+      "bytes": 19929
+    },
+    "figures\\process_q4_model_selection.png": {
+      "sha256": "8fd709c86420072c1419852829013e90548e8c14863a448bc68dded0c5050eb4",
+      "bytes": 106314
+    },
+    "figures\\process_q4_model_selection.svg": {
+      "sha256": "b1ef3d29ddad474f498cebc11625dac895c8fec99ba60292b88c77113d9a0e8b",
+      "bytes": 34903
+    },
+    "figures\\process_q4_threshold_tradeoff.png": {
+      "sha256": "d6b83344ef66640c16f0fac770732c1058d5e7731695b77a3188859ec28d3d74",
+      "bytes": 132262
+    },
+    "figures\\process_q4_threshold_tradeoff.svg": {
+      "sha256": "a9b8d5c237663792042680b2b8cf8462424ed1443ff1b26653fee456c1ca010c",
+      "bytes": 12004
+    },
+    "figures\\raw_q4_label_distribution.png": {
+      "sha256": "a7ee2d41921c50d5728dc339f4b42317ed38f0a321604277481563cbdf267b8c",
+      "bytes": 56441
+    },
+    "figures\\raw_q4_label_distribution.svg": {
+      "sha256": "e686da383bfe63d7cd7527a9bc1f1102426c7a84e39b5bb2f6b4043800f9358e",
+      "bytes": 10775
+    },
+    "figures\\raw_q4_quality_relationships.png": {
+      "sha256": "e6141dc7eb567bf64c032fdbb7db957f8b8d49e31ef9663345877ffac2f800d5",
+      "bytes": 121241
+    },
+    "figures\\raw_q4_quality_relationships.svg": {
+      "sha256": "9a2a580f10c749101f1617facf3785499395fe88d1566600c0497722239ecf4a",
+      "bytes": 34597
+    },
+    "figures\\raw_q4_zscore_distribution.png": {
+      "sha256": "02465d163f9b8ca1a5695bd18c3216260d919ed48d4393c88003981fed669cc0",
+      "bytes": 85755
+    },
+    "figures\\raw_q4_zscore_distribution.svg": {
+      "sha256": "8b2d3d0d340e7255329931a915c7babaf89c75e0fca68b453279418bc1cdfecf",
+      "bytes": 226087
+    },
+    "figures\\result_q4_calibration.png": {
+      "sha256": "451124e267adff8074ede8adaea872b67c98c114ed50d2bc0987ace95b1768ff",
+      "bytes": 132295
+    },
+    "figures\\result_q4_calibration.svg": {
+      "sha256": "70c8436c9ea4d8aa973b15b6550d2e654d412ca2ca22cd18e11d274d102d4b36",
+      "bytes": 17593
+    },
+    "figures\\result_q4_feature_importance.png": {
+      "sha256": "3b5abb179106a3ef0116584133cbbfd8a3db12d539e01e9b99da67fb677e7085",
+      "bytes": 115891
+    },
+    "figures\\result_q4_feature_importance.svg": {
+      "sha256": "ab2902a1afb383ba39b6557746e55896556becb42ddf7bcdc7afb768b462da8a",
+      "bytes": 17834
+    },
+    "figures\\result_q4_metrics_comparison.png": {
+      "sha256": "af9dbf3988908243c223ac8f9760371e12554e7cf9e1187fa7ac4e15340c64c0",
+      "bytes": 51770
+    },
+    "figures\\result_q4_metrics_comparison.svg": {
+      "sha256": "dda89d0049a3f624b0f55527c3bc2413c34e642a2a661c0e99f5573136820535",
+      "bytes": 18024
+    },
+    "figures\\result_q4_pr_curves.png": {
+      "sha256": "c7ba41b6ce4ea461e028932351fbbdb024d8bbc784157f11b839242961e9410a",
+      "bytes": 142281
+    },
+    "figures\\result_q4_pr_curves.svg": {
+      "sha256": "b9fff5abaa3d3889ef2ffd8925ef343cd3c2d1c7f0a2ad68324bbebaa8906b43",
+      "bytes": 19070
+    },
+    "doc\\C题问题4最终报告_v5.docx": {
+      "sha256": "04e0e2b8ca8d11df706b9ef78a7b3c5e353fcfccf95511a3e1f218bfb66433c4",
+      "bytes": 799555
+    }
+  }
+}

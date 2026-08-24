@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "risk_grid_points": 5151,
+  "winner_rate_on_equal_grid": {
+    "15/18": 0.27858668219763155,
+    "16/18": 0.34498155697922733,
+    "18/22": 0.3764317608231411
+  },
+  "safety_threshold_combinations": 125,
+  "feasible_rate_by_policy": {
+    "15/18": 0.0,
+    "16/18": 0.128,
+    "18/22": 1.0
+  },
+  "cutpoint_evidence_scope": "两组固定切点外层汇总.csv中最小组人数30且完成4折的全部网格点；不声称为Bootstrap区间",
+  "cutpoints_evaluated_min_group_30": 20,
+  "cutpoints_safe_4_of_4": 20,
+  "safe_cutpoint_range": [
+    29.75,
+    34.5
+  ],
+  "algorithmic_cutpoint": 34.357,
+  "deployment_rounding_35_in_safe_platform": false,
+  "interpretation": "权重网格点比例不是先验概率；用于说明结论依赖哪些风险偏好。34.357是既有算法切点；本表只证明列出的固定网格点，35不在4/4安全平台时不得据此声称安全。"
+}

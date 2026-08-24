@@ -11,9 +11,11 @@ from matplotlib.colors import Normalize
 
 ROOT = Path(__file__).resolve().parents[1]
 B_DIR = ROOT / "B题" / "B题" / "附件"
-C_FILE = ROOT / "C题" / "C题" / "附件.xlsx"
-OUT = ROOT / "outputs" / "附件可视化"
-OUT.mkdir(parents=True, exist_ok=True)
+C_FILE = ROOT / "C题" / "data" / "raw" / "附件.xlsx"
+OUT_B = ROOT / "B题" / "output" / "figures" / "attachments"
+OUT_C = ROOT / "C题" / "output" / "figures" / "attachments"
+OUT_B.mkdir(parents=True, exist_ok=True)
+OUT_C.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update(
     {
@@ -36,8 +38,8 @@ def parse_week(value) -> float:
     return float(m.group(1)) + float(m.group(2) or 0) / 7.0
 
 
-def save(fig: plt.Figure, name: str) -> None:
-    fig.savefig(OUT / name, dpi=220, bbox_inches="tight", facecolor="white")
+def save(fig: plt.Figure, directory: Path, name: str) -> None:
+    fig.savefig(directory / name, dpi=220, bbox_inches="tight", facecolor="white")
     plt.close(fig)
 
 
@@ -68,7 +70,7 @@ def plot_b_attachment(index: int, material: str, angle: int) -> None:
         color="#475467",
         fontsize=9,
     )
-    save(fig, f"B题_附件{index}_{material}_{angle}度.png")
+    save(fig, OUT_B, f"B题_附件{index}_{material}_{angle}度.png")
 
 
 def add_panel_label(ax, text: str) -> None:
@@ -141,7 +143,7 @@ def male_overview() -> None:
     add_panel_label(ax, "D")
 
     fig.text(0.5, -0.01, f"记录数 {len(d):,}；独立孕妇 {d['孕妇代码'].nunique():,}。重复检测按孕妇代码识别。", ha="center", color="#475467")
-    save(fig, "C题_男胎检测数据_可视化总览.png")
+    save(fig, OUT_C, "C题_男胎检测数据_可视化总览.png")
 
 
 def female_overview() -> None:
@@ -212,7 +214,7 @@ def female_overview() -> None:
     add_panel_label(ax, "D")
 
     fig.text(0.5, -0.01, f"记录数 {len(d):,}；独立孕妇 {d['孕妇代码'].nunique():,}；出生结局列全部为“健康”。", ha="center", color="#475467")
-    save(fig, "C题_女胎检测数据_可视化总览.png")
+    save(fig, OUT_C, "C题_女胎检测数据_可视化总览.png")
 
 
 def main() -> None:
@@ -225,7 +227,8 @@ def main() -> None:
         plot_b_attachment(*args)
     male_overview()
     female_overview()
-    print("\n".join(str(p) for p in sorted(OUT.glob("*.png"))))
+    generated = sorted(OUT_B.glob("*.png")) + sorted(OUT_C.glob("*.png"))
+    print("\n".join(str(p) for p in generated))
 
 
 if __name__ == "__main__":

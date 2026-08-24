@@ -1,0 +1,41 @@
+{
+  "mode": "smoke",
+  "input_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+  "rows": 605,
+  "patients": 147,
+  "label": "T18",
+  "outer_fold": 0,
+  "train_rows": 453,
+  "test_rows": 152,
+  "train_patients": 110,
+  "test_patients": 37,
+  "threshold": 0.04291205824914753,
+  "threshold_selection": {
+    "sensitivity": 0.8571428571428571,
+    "specificity": 0.6339712918660287,
+    "f2": 0.46439628482972134,
+    "mode": "sensitivity_constrained"
+  },
+  "platt_used": true,
+  "test_metrics": {
+    "n": 152,
+    "positive": 11,
+    "tp": 8,
+    "fp": 48,
+    "tn": 93,
+    "fn": 3,
+    "sensitivity": 0.7272727272727273,
+    "specificity": 0.6595744680851063,
+    "precision": 0.14285714285714285,
+    "f2": 0.4,
+    "roc_auc": 0.7311411992263057,
+    "pr_auc": 0.42049516959732613,
+    "brier": 0.05759345200811539
+  },
+  "probability_range": [
+    0.009393448216571622,
+    0.4923352681375383
+  ],
+  "feature_count": 33,
+  "seed": 20250824
+}

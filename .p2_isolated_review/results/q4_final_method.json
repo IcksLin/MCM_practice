@@ -1,0 +1,58 @@
+{
+  "status": "complete_nested_group_cv",
+  "input_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+  "rows": 605,
+  "patients": 147,
+  "outer_folds": 4,
+  "inner_folds": 3,
+  "split_search_repeats": 2000,
+  "bootstrap_repeats": 2000,
+  "labels": [
+    "T13",
+    "T18",
+    "T21"
+  ],
+  "any_probability_comparison_descriptive_only": {
+    "direct_pr_auc": 0.4264203332649219,
+    "union_pr_auc": 0.44582019875513446,
+    "direct_brier": 0.08272341950351132,
+    "union_brier": 0.08313306184199568
+  },
+  "any_selection_policy": "each outer fold selected using only its training OOF probabilities",
+  "any_source_by_outer": [
+    {
+      "outer_fold": 0,
+      "selected": "union",
+      "direct_pr_auc": 0.42177290391514405,
+      "union_pr_auc": 0.5138783619140367,
+      "direct_brier": 0.08549244496700924,
+      "union_brier": 0.08111348747803047
+    },
+    {
+      "outer_fold": 1,
+      "selected": "union",
+      "direct_pr_auc": 0.31885143942658756,
+      "union_pr_auc": 0.37942946017852625,
+      "direct_brier": 0.08495686258003854,
+      "union_brier": 0.08128365750934102
+    },
+    {
+      "outer_fold": 2,
+      "selected": "union",
+      "direct_pr_auc": 0.25315495607627525,
+      "union_pr_auc": 0.2954257235479024,
+      "direct_brier": 0.09398565839823503,
+      "union_brier": 0.09216638622085957
+    },
+    {
+      "outer_fold": 3,
+      "selected": "union",
+      "direct_pr_auc": 0.37283222245006364,
+      "union_pr_auc": 0.4083510932099807,
+      "direct_brier": 0.08557013180631207,
+      "union_brier": 0.08346426327093685
+    }
+  ],
+  "patient_overlap_max": 0,
+  "important_limit": "附件AE列均为‘是’，只能验证AB筛查标签复现，不能声称预测真实胎儿疾病。"
+}

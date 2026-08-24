@@ -1,0 +1,20 @@
+{
+  "mode": "full",
+  "outer_folds": 4,
+  "group_search_rule": "1..floor(n_development/30)",
+  "selected_group_counts": {
+    "1": 2,
+    "2": 2
+  },
+  "mean_safe_folds": 4,
+  "lcb_safe_folds": 3,
+  "mean_test_week": 18.948948439620082,
+  "mean_test_readiness": 0.9555824372275231,
+  "seed": 20260825,
+  "outer_rounds_from_development_inner_early_stopping": [
+    150,
+    64,
+    853,
+    113
+  ]
+}

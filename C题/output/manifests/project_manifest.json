@@ -1,0 +1,741 @@
+{
+  "generated_at_utc": "2026-08-24T18:47:18.309036+00:00",
+  "project_root": "C题",
+  "reproduction": {
+    "light": "E:\\anaconda\\python.exe scripts\\run_all.py",
+    "full": "E:\\anaconda\\python.exe scripts\\run_all.py --full"
+  },
+  "file_count": 146,
+  "files": [
+    {
+      "path": "data/raw/C题.pdf",
+      "bytes": 357653,
+      "sha256": "d54400f4bb9920c0d37f15f5b6bc161aa281c4b32c03c063efdeb739716eac08"
+    },
+    {
+      "path": "data/raw/附件.xlsx",
+      "bytes": 481734,
+      "sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af"
+    },
+    {
+      "path": "data/validation/固化校验.json",
+      "bytes": 844,
+      "sha256": "eea04424660811f7b343aaefa5424a6ac81cab57eef8f3581a83243b828f3cf9"
+    },
+    {
+      "path": "data/validation/女胎患者级折号.csv",
+      "bytes": 47016,
+      "sha256": "35bd8347a2c3e29e30502e96d4939cc170389f4fe8b0853e60b1a39940c8db1e"
+    },
+    {
+      "path": "data/validation/数据清单.json",
+      "bytes": 8121,
+      "sha256": "03315bdaf8f462dfb702f3cf475edde96f1a905948eadf7607587d10378cfea4"
+    },
+    {
+      "path": "data/validation/男胎患者级折号.csv",
+      "bytes": 13061,
+      "sha256": "c1c0e5916405040c2e8b9da7b91571011da28091898de32008f7d9b5f428001a"
+    },
+    {
+      "path": "data/validation/验证协议.md",
+      "bytes": 2923,
+      "sha256": "aa7f8f92dcc8c8dcdd58e8ff3d995656a94a9dd0f75c4acd3b2d8e2bed5c4a7a"
+    },
+    {
+      "path": "docs/C题总思路表.md",
+      "bytes": 50579,
+      "sha256": "e87843f802dfc7b5e04a89ac8bf7d0e18f9c57e46f396ba0e7408f7e54cd8719"
+    },
+    {
+      "path": "docs/Optimal_Binning方法说明.md",
+      "bytes": 2196,
+      "sha256": "7eb2a769c95a784b30ab9fec525e45ed8eef9ea8753060a0880b553f82486362"
+    },
+    {
+      "path": "docs/q4_术语表格.md",
+      "bytes": 6076,
+      "sha256": "65bf7fac598b54673a82a767c6c34ef1692c063edcddc43fc465328a1f5bcf6a"
+    },
+    {
+      "path": "docs/q4_题目分析报告.md",
+      "bytes": 14090,
+      "sha256": "df413332ed1c90a0aee6f3131b456c40dc0024e9e9f468f39bd67d56085a2c86"
+    },
+    {
+      "path": "docs/使用指南.md",
+      "bytes": 3506,
+      "sha256": "f8180ac6acd0f6946cc69f1c78668279312ba0c90191102f411ef8df45f55fd1"
+    },
+    {
+      "path": "docs/术语表格.md",
+      "bytes": 4624,
+      "sha256": "7b19c37c88e2657ba9afa5dc83033878fff847c3c666a630b60c5e3d2bf6153e"
+    },
+    {
+      "path": "docs/题目分析报告.md",
+      "bytes": 10189,
+      "sha256": "0456f1f25d59bfc6f902b0eac8699fe05e745fb861f7f4a71a4e7840b0850d29"
+    },
+    {
+      "path": "algorithms/q1/diagnostics_v2.py",
+      "bytes": 5295,
+      "sha256": "2ed370840a47fa51c07e679f809217361405e0fb589f9da433c9894e5f347eb3"
+    },
+    {
+      "path": "algorithms/q1/solve_q1.py",
+      "bytes": 7275,
+      "sha256": "f3c542af75a77896742716830cc1cb2e6946c8461ebfe356e808d612b70abc2c"
+    },
+    {
+      "path": "algorithms/q2/policy_sensitivity_v11.py",
+      "bytes": 4583,
+      "sha256": "8add06cd8d7c4e29a83ba07638d295cf82b1357de2110598cb131513ed70202c"
+    },
+    {
+      "path": "algorithms/q2/validate_q2_policy.py",
+      "bytes": 2349,
+      "sha256": "9f9d92c9297acd11b251960c46007cad15a1f7ad620be89b286709a1747683fb"
+    },
+    {
+      "path": "algorithms/q3/extended_group_search_v3.py",
+      "bytes": 11619,
+      "sha256": "f7dd11fa7a382195c6d3cb4e8988648ed70bdfe4ac46a292407a59bf25a594fc"
+    },
+    {
+      "path": "algorithms/q4/patient_triage_v6.py",
+      "bytes": 8326,
+      "sha256": "baf769ea6d5869600f66cb700844357fe17b1fedb69cd4e8d4813b20e4766a32"
+    },
+    {
+      "path": "algorithms/q4/run_q4_full.py",
+      "bytes": 20155,
+      "sha256": "4423c0e93db708f194a989d01abb79280d0af7b65ed6a1d65a6ffd6165358848"
+    },
+    {
+      "path": "algorithms/q4/solve_q4.py",
+      "bytes": 14178,
+      "sha256": "31df131e2d419524b2639f7f7199620498095bf682829cc5b0f5855dae22386e"
+    },
+    {
+      "path": "scripts/build_manifest.py",
+      "bytes": 1525,
+      "sha256": "3aca8705e7777d81ee61afe17a5189aa0e18cd19591a11b5b2190589e0fe51ce"
+    },
+    {
+      "path": "scripts/build_thoughts_pdf.py",
+      "bytes": 1986,
+      "sha256": "bb05b8ae07471c5d9be3a3c9bfbd43eba7948b7c1873ac190aeef95c3c09da44"
+    },
+    {
+      "path": "scripts/render_thoughts_tex.py",
+      "bytes": 7850,
+      "sha256": "327daab2523375ae2327dadad056e0b466678d51e308293a45802885b57a93a7"
+    },
+    {
+      "path": "scripts/run_all.py",
+      "bytes": 1339,
+      "sha256": "16ce09acc76a88f4734134df39471a45ce5781626fad42fccad4824b231568f0"
+    },
+    {
+      "path": "scripts/utils/plot_style.py",
+      "bytes": 17654,
+      "sha256": "e9fa501fe72ff89b913e1f777e0b5925a118b95b9d324288c59e906f27592b9a"
+    },
+    {
+      "path": "scripts/validation/freeze_validation.py",
+      "bytes": 11758,
+      "sha256": "6c22a2262576b7876ba8183a3e1d6f33c5ea6148c45c000ba82fe5eae11b0b33"
+    },
+    {
+      "path": "scripts/visualization/plot_q123.py",
+      "bytes": 10577,
+      "sha256": "6e965c7eb124c97ee9479d28be76cb838cba9fe12ee970eecd0a5cee50a6fa93"
+    },
+    {
+      "path": "scripts/visualization/plot_q4.py",
+      "bytes": 13587,
+      "sha256": "8b590157c666c7667033edd3e88bbceb7543f32cb38c52a817de994e5942959d"
+    },
+    {
+      "path": "output/results/cross_question/复现清单.json",
+      "bytes": 11347,
+      "sha256": "289418500fa1fcaf9c00af6e2fd6354bd660b67128e7a36a3c76cd60016f0844"
+    },
+    {
+      "path": "output/results/q1/q1_model_coefficients.csv",
+      "bytes": 2040,
+      "sha256": "60c85aa94272c6a311728cb79b04ab46e370cb4d0b7d0842b7153dec8939aa42"
+    },
+    {
+      "path": "output/results/q1/q1_model_summary.json",
+      "bytes": 1936,
+      "sha256": "31841773ceba1f3353ff2e229af36606c7ee70b1dda31bc80ba79504ea09a0fd"
+    },
+    {
+      "path": "output/results/q1/q1_record_fit.csv",
+      "bytes": 99550,
+      "sha256": "0e710eaecf96bab8a42ea8b41d3815ed31d1e12dff3c62b84df5c2af7c553323"
+    },
+    {
+      "path": "output/results/q1/robustness/关键系数Bootstrap区间_b200.csv",
+      "bytes": 444,
+      "sha256": "7ea480ab27e46dfc40569a2c89f915fca9c717fd6dab6cb62820f034457d862c"
+    },
+    {
+      "path": "output/results/q1/robustness/实验结论_b200.json",
+      "bytes": 1586,
+      "sha256": "a9acdf6afc15315640a6f9e89e28b81c797b19ee080ba21e78747d376ce20fe1"
+    },
+    {
+      "path": "output/results/q1/robustness/患者Bootstrap原始结果_b200.csv",
+      "bytes": 23574,
+      "sha256": "9ea4d96a1f631d434f253c3a312b63f606e8fe2f5c31233d4c86f5b27b6b8781"
+    },
+    {
+      "path": "output/results/q1/robustness/残差诊断_b200.csv",
+      "bytes": 99853,
+      "sha256": "66b052b88ab5e05369ebc94154d4216a7cfec697378c99d538defbc89ae7d5ce"
+    },
+    {
+      "path": "output/results/q1/robustness/随机截距分布_b200.csv",
+      "bytes": 6971,
+      "sha256": "6da990398954ebdc3debbc63474ca83caf36f770c497641124b8eb44403b0f09"
+    },
+    {
+      "path": "output/results/q2/README_成果导航.md",
+      "bytes": 822,
+      "sha256": "ea13c5639355c388d0d69db07f9fd61fcd24adb82bc87d33569da0ab874433ef"
+    },
+    {
+      "path": "output/results/q2/sensitivity/Bootstrap区间内切点平台.csv",
+      "bytes": 1950,
+      "sha256": "c634c4dbcf7797d73cd0b55ae9c51d0e4ff5bb3f35c549782bf94dedd5cf7b44"
+    },
+    {
+      "path": "output/results/q2/sensitivity/固定网格切点安全平台.csv",
+      "bytes": 2257,
+      "sha256": "f2b18c8c14ae3c2b1533ffd84ef5fbc4f1153ccf259c2edcde3ab278be7e79c3"
+    },
+    {
+      "path": "output/results/q2/sensitivity/安全门槛敏感性.csv",
+      "bytes": 3530,
+      "sha256": "28e0cb232d2aa4962edaea038ea3c04e8767a2c7d29cad700aa140d4451620b3"
+    },
+    {
+      "path": "output/results/q2/sensitivity/实验结论.json",
+      "bytes": 941,
+      "sha256": "191041e4bf574b6f53f658037560286edefaa55c8651ef71d5ec12603e356551"
+    },
+    {
+      "path": "output/results/q2/sensitivity/风险权重单纯形.csv",
+      "bytes": 271412,
+      "sha256": "31d66d0e78b714825914dbf54dbf1470807e870ccf93558a54d0879818b8da3b"
+    },
+    {
+      "path": "output/results/q2/参数AFT基线_冻结.json",
+      "bytes": 285,
+      "sha256": "7efde608ac0e450d07e883308b6eac5cf991a2c3123b7e3af809d7bdbb06578b"
+    },
+    {
+      "path": "output/results/q2/男胎患者级精简数据.csv",
+      "bytes": 28366,
+      "sha256": "476274aa38b2fff956ee0330f2d4992f0357f8af63b87d6f0c1326e93b30d6e3"
+    },
+    {
+      "path": "output/results/q2/问题2方法演进摘要.csv",
+      "bytes": 882,
+      "sha256": "98d863a0407e8b84f5b6b7ef054811a6acfcc73a3477e348f7d2aaf24af3b510"
+    },
+    {
+      "path": "output/results/q2/问题2最终建议表.csv",
+      "bytes": 455,
+      "sha256": "40fd33ad112f618a80ded136fb061c8ea0b7bc2369544b2fa7d0592bd3297c64"
+    },
+    {
+      "path": "output/results/q2/问题2核心方案对比.csv",
+      "bytes": 917,
+      "sha256": "8fd3ac9619acb9b25beaf53d80b4cf4bad47e058aa2ffced71dd10d5062f42cf"
+    },
+    {
+      "path": "output/results/q3/BMI组内个体时点异质性.csv",
+      "bytes": 277,
+      "sha256": "ea27d84a009c16073a7cf1ffec04bf789898f9fa3f750229f2595c2fa1856a06"
+    },
+    {
+      "path": "output/results/q3/extended_search/严格嵌套外层审计_full.csv",
+      "bytes": 752,
+      "sha256": "a5794d9bfbd98446a6b0bddcb24499cbf20fd3af61c2517449b831180389d336"
+    },
+    {
+      "path": "output/results/q3/extended_search/全部可行组数开发比较_full.csv",
+      "bytes": 2056,
+      "sha256": "cbaa25907be13aabb3ffe998b08ffa347ea1a56e9e20dbcc0bb3c27096144362"
+    },
+    {
+      "path": "output/results/q3/extended_search/实验结论_full.json",
+      "bytes": 418,
+      "sha256": "d2f91bf9005933337d0c146a5f4cf2c4488f0061297d7a10023578ebdfc437a3"
+    },
+    {
+      "path": "output/results/q3/两组固定切点外层汇总.csv",
+      "bytes": 7821,
+      "sha256": "a281d3235216aaa26d35735c33db68336572eea783c17dd130a06d7094313605"
+    },
+    {
+      "path": "output/results/q3/可靠性与最小组人数敏感性.csv",
+      "bytes": 14299,
+      "sha256": "75d43b0d2c40a9984ded322487527b84389372073a530c0bf00d41ae7fbfc366"
+    },
+    {
+      "path": "output/results/q3/固定候选Bootstrap汇总.csv",
+      "bytes": 589,
+      "sha256": "37bce9040272007ebab63b8dcc7c5d9f952fb33db3f524a81727ddd67b2befa7"
+    },
+    {
+      "path": "output/results/q3/多因素置换重要性_汇总.csv",
+      "bytes": 440,
+      "sha256": "5217145abd23f926d4fe768ce0860a56bf390abfaab960a2ee01a16abc804e59"
+    },
+    {
+      "path": "output/results/q3/最终政策外层4折审计.csv",
+      "bytes": 1300,
+      "sha256": "0dba0d5b5b97092ec55a4ace836e95a5be7cc7d1d195eb1d9fd31c166460e8cb"
+    },
+    {
+      "path": "output/results/q3/检测误差敏感性汇总.csv",
+      "bytes": 4069,
+      "sha256": "b871fd50aba985022faf6358bd29c3a9b11c5d4a81d58accc2b5a84640269db0"
+    },
+    {
+      "path": "output/results/q3/模型外层测试对比.csv",
+      "bytes": 376,
+      "sha256": "42b8631847a8fa7f2e893e36ae339ebefc45b4c4fda66cea58bf0ec22db4fa11"
+    },
+    {
+      "path": "output/results/q3/组数外层验证比较.csv",
+      "bytes": 746,
+      "sha256": "8a0e432b7ca9640a85fffe581bd5fd4652dac31bdd73d8170af6f8261d3f69c0"
+    },
+    {
+      "path": "output/results/q3/问题3外层逐折分组政策_冻结.csv",
+      "bytes": 25069,
+      "sha256": "a567ba748fe6c68e18c13203992505a2e549d4f0b220f91d1be9c09821d0e530"
+    },
+    {
+      "path": "output/results/q3/问题3嵌套外层独立审计.csv",
+      "bytes": 622,
+      "sha256": "97a0c895a66eab0e87deb3114574ead46183c02f11023d50b7b792ea19c0947d"
+    },
+    {
+      "path": "output/results/q3/问题3嵌套外层独立审计.json",
+      "bytes": 638,
+      "sha256": "666354774bdc0dba8cb6cf4ce3873b3d29527e3e9df08923ecb23c83ef1b4280"
+    },
+    {
+      "path": "output/results/q3/问题3最终建议表_v2.csv",
+      "bytes": 138,
+      "sha256": "da9fa655e03a69d525520c0b6b9625f89f743af7f1b90cb6edb2c2df60cb7226"
+    },
+    {
+      "path": "output/results/q3/问题3最终结论_v2.json",
+      "bytes": 2025,
+      "sha256": "da478f30bfd5b12296564e2ec63141faa55520ec8a59f7a4d93d6a8501e557e6"
+    },
+    {
+      "path": "output/results/q3/问题3最终验证结论.json",
+      "bytes": 3793,
+      "sha256": "2a71524fa55a6733819cfc214ab841a67dd44cca27e6c3a1395d19287e6d067b"
+    },
+    {
+      "path": "output/results/q4/q4_bootstrap_summary.csv",
+      "bytes": 3300,
+      "sha256": "0862bc3e917079c19c6a0c71fdbe123d3f42eff3cbc61e223af617ef53fe6dd5"
+    },
+    {
+      "path": "output/results/q4/q4_feature_importance.csv",
+      "bytes": 21219,
+      "sha256": "13bf44b011b42c21bb63dc0ae9e769280015f129051e9e0f2671029fa43e2553"
+    },
+    {
+      "path": "output/results/q4/q4_figure_contracts.json",
+      "bytes": 2415,
+      "sha256": "e318645300f2d793ac517c73c86357b796efcbb16386269a739909bf331556dd"
+    },
+    {
+      "path": "output/results/q4/q4_final_method.json",
+      "bytes": 1804,
+      "sha256": "3d5c29fac3ffe64c39f958dde661298edfb33f41afc1357bfd5726d15841f807"
+    },
+    {
+      "path": "output/results/q4/q4_final_recommendations.csv",
+      "bytes": 95829,
+      "sha256": "b25f6b040763c7c6bfdd617f70f7c8dd7880460f795e925c9038eb160c8573f7"
+    },
+    {
+      "path": "output/results/q4/q4_fold_audit.csv",
+      "bytes": 1616,
+      "sha256": "54c22b42e1b7cb3d334a2995b8b71edf6fa4417605ed18a3fdf0ed1d779c70d4"
+    },
+    {
+      "path": "output/results/q4/q4_metrics_summary.csv",
+      "bytes": 1375,
+      "sha256": "138fd1436739c260e84f78359b7ad1ca21e72e3c52211f00f23b3ef64a15255b"
+    },
+    {
+      "path": "output/results/q4/q4_model_selection.csv",
+      "bytes": 3760,
+      "sha256": "73c8f94340b3fde5d0b8fa56e6657bf9d39f8a55ef7ecffb77efdeef95fe9642"
+    },
+    {
+      "path": "output/results/q4/q4_outer_metrics.csv",
+      "bytes": 8531,
+      "sha256": "169b8a5fe56a3f750687880dc9ab60579cc3846fb5c639a2e733e984e2b2071a"
+    },
+    {
+      "path": "output/results/q4/q4_outer_predictions.csv",
+      "bytes": 224556,
+      "sha256": "2973ad3e049a2bcaf1632d80ab70d0341d7cf765c075d7c4ea2a49eae7840905"
+    },
+    {
+      "path": "output/results/q4/q4_profile_input.csv",
+      "bytes": 81031,
+      "sha256": "84dfb69c2c40d66bc2a1fefe1ae714142dc62f956ab938cba95c3ed3fde1e4f3"
+    },
+    {
+      "path": "output/results/q4/q4_threshold_sensitivity.csv",
+      "bytes": 463569,
+      "sha256": "82e1d457898fcf549a5f3c711a91dcb304fac902d7ed45b69bc130b76ffdb653"
+    },
+    {
+      "path": "output/results/q4/triage/候选规则开发折比较.csv",
+      "bytes": 2322,
+      "sha256": "24c4031c3ffbc879765f39504a6ece3a53ea04beff9bccec801e05bd478a0903"
+    },
+    {
+      "path": "output/results/q4/triage/外层患者级审计.csv",
+      "bytes": 619,
+      "sha256": "c1659c0bbd8877c3cd079128b31f76ff6bd2d68f64067009629382fad9ec467f"
+    },
+    {
+      "path": "output/results/q4/triage/实验结论.json",
+      "bytes": 1101,
+      "sha256": "f06da6288b5ec23527c4404c525bbb1e5b720d867f5598c785d28da9b0c4661f"
+    },
+    {
+      "path": "output/results/q4/triage/患者级最终分流.csv",
+      "bytes": 10257,
+      "sha256": "224c5cf8ed798300cd3a26b861f9eeba0c3138018fd1dbff802b26b35d575f6b"
+    },
+    {
+      "path": "output/reports/C题总思路表.pdf",
+      "bytes": 398825,
+      "sha256": "5d41c1978109b4473818f8be3cfeaee8537831d9b99c1f2979b54193e699955e"
+    },
+    {
+      "path": "output/reports/C题总思路表.pdf.build.json",
+      "bytes": 444,
+      "sha256": "2b9c914c977a6f152972bb5b1c81666ee4ea4e836f947ec2a356241e712e0592"
+    },
+    {
+      "path": "output/reports/legacy/C题问题1-3统合报告_v1.docx",
+      "bytes": 911859,
+      "sha256": "8c43811cc72c7f03cb5432032f0231982d3f4432fbbf63b63fb203981600eace"
+    },
+    {
+      "path": "output/reports/legacy/C题问题4最终报告_v5.docx",
+      "bytes": 799555,
+      "sha256": "04e0e2b8ca8d11df706b9ef78a7b3c5e353fcfccf95511a3e1f218bfb66433c4"
+    },
+    {
+      "path": "output/figures/grayscale/process_q4_fold_balance_grayscale.png",
+      "bytes": 26519,
+      "sha256": "551f25794510aaf05be12f52abea161e344f00cd23613ef52c363ab0469d192e"
+    },
+    {
+      "path": "output/figures/grayscale/process_q4_model_selection_grayscale.png",
+      "bytes": 41823,
+      "sha256": "83ca6e269b97d2277937415d3b894051197605c5537ffb24214853881d357375"
+    },
+    {
+      "path": "output/figures/grayscale/process_q4_threshold_tradeoff_grayscale.png",
+      "bytes": 54424,
+      "sha256": "772a0101f7d003be399295ba525aa729ffa19e25219220dd550f3551c5dacfa3"
+    },
+    {
+      "path": "output/figures/grayscale/raw_q4_label_distribution_grayscale.png",
+      "bytes": 23629,
+      "sha256": "20255a3bf346361bc47784cd1da2d59ee021748289e9e621dcf3f73473d8be6e"
+    },
+    {
+      "path": "output/figures/grayscale/raw_q4_quality_relationships_grayscale.png",
+      "bytes": 49190,
+      "sha256": "14b57cebaabe37441d3e8807ddeea9736df248704835a780a26ed9bfa24c22e7"
+    },
+    {
+      "path": "output/figures/grayscale/raw_q4_zscore_distribution_grayscale.png",
+      "bytes": 37911,
+      "sha256": "e2e2fc74fe3018ebc2658250c14a8242ea543d3c3f7d065fc316ef2d13a6e457"
+    },
+    {
+      "path": "output/figures/grayscale/result_q4_calibration_grayscale.png",
+      "bytes": 53833,
+      "sha256": "bbb2d596bb62167d7ba75db56305ef8651bb5971dd0f292494ca2fc0d1565898"
+    },
+    {
+      "path": "output/figures/grayscale/result_q4_feature_importance_grayscale.png",
+      "bytes": 48148,
+      "sha256": "6b100b4118955b8e368325c5bc42a715d4e49af5a550ac15090573a428ba7642"
+    },
+    {
+      "path": "output/figures/grayscale/result_q4_metrics_comparison_grayscale.png",
+      "bytes": 22128,
+      "sha256": "2f4731f84313c6683d499256e2b5762cba059d8db5c184a177319694b7478557"
+    },
+    {
+      "path": "output/figures/grayscale/result_q4_pr_curves_grayscale.png",
+      "bytes": 58983,
+      "sha256": "df8f3fad72204a0a5b51a375e44e3796534425b68d7bdbc817e6298dcdf93bd9"
+    },
+    {
+      "path": "output/figures/process_q4_fold_balance.png",
+      "bytes": 64729,
+      "sha256": "9ba39c7f76458374dfb1d63052a8298e714a35bcf01a02d40e2e4dfa4567827a"
+    },
+    {
+      "path": "output/figures/process_q4_fold_balance.svg",
+      "bytes": 19929,
+      "sha256": "cd8d56aa23277e01f8fbcf1918af2b4fe8abca8ee9a75cb99e9a2d2216b8214b"
+    },
+    {
+      "path": "output/figures/process_q4_model_selection.png",
+      "bytes": 106314,
+      "sha256": "8fd709c86420072c1419852829013e90548e8c14863a448bc68dded0c5050eb4"
+    },
+    {
+      "path": "output/figures/process_q4_model_selection.svg",
+      "bytes": 34903,
+      "sha256": "b1ef3d29ddad474f498cebc11625dac895c8fec99ba60292b88c77113d9a0e8b"
+    },
+    {
+      "path": "output/figures/process_q4_threshold_tradeoff.png",
+      "bytes": 132262,
+      "sha256": "d6b83344ef66640c16f0fac770732c1058d5e7731695b77a3188859ec28d3d74"
+    },
+    {
+      "path": "output/figures/process_q4_threshold_tradeoff.svg",
+      "bytes": 12004,
+      "sha256": "a9b8d5c237663792042680b2b8cf8462424ed1443ff1b26653fee456c1ca010c"
+    },
+    {
+      "path": "output/figures/q123/_qa/process_q1_diagnostics_grayscale.png",
+      "bytes": 161484,
+      "sha256": "108bfbd9efb0d4669919db6fa03341c262c2b3ef97078189f16ebfa10c0a088d"
+    },
+    {
+      "path": "output/figures/q123/_qa/process_q2_policy_stability_grayscale.png",
+      "bytes": 68360,
+      "sha256": "b7317a9c6134e12c6d6a0b2b1278830b23d1184dc98498e481135ac5e0b498d8"
+    },
+    {
+      "path": "output/figures/q123/_qa/process_q3_group_selection_grayscale.png",
+      "bytes": 99755,
+      "sha256": "77b23fdf031f616a3095737ecdf4031bdcf77aab6270266b0141aee8f8d2b9e2"
+    },
+    {
+      "path": "output/figures/q123/_qa/raw_q1_y_week_bmi_grayscale.png",
+      "bytes": 255477,
+      "sha256": "489c5f6a98ed1d88c2f857ee053080027326de01371e21e49b09be4596ab67f1"
+    },
+    {
+      "path": "output/figures/q123/_qa/raw_q2_bmi_distribution_grayscale.png",
+      "bytes": 56758,
+      "sha256": "4520a553cabded1d7b3619b53d48040ed10d96275e0617e4666fd76a21a7a6d5"
+    },
+    {
+      "path": "output/figures/q123/_qa/raw_q3_feature_evidence_grayscale.png",
+      "bytes": 87448,
+      "sha256": "3829667bdac869eb62d848c285d987c58d7b04de7cb0cea8855735563a006c08"
+    },
+    {
+      "path": "output/figures/q123/_qa/result_q1_effects_grayscale.png",
+      "bytes": 54480,
+      "sha256": "3f1b7b2d03a3c850d7bd7777cab4e77cdd8f2bcfd811e16ecd38b0b145413b06"
+    },
+    {
+      "path": "output/figures/q123/_qa/result_q2_tradeoff_grayscale.png",
+      "bytes": 66824,
+      "sha256": "19769dcd1f943e55adc819746a1fb5260b15e82dda717d5fb78f1e6bc1756531"
+    },
+    {
+      "path": "output/figures/q123/_qa/result_q3_final_policy_grayscale.png",
+      "bytes": 100180,
+      "sha256": "e26858096c4e4b7db9009d5a4fa1076522dcbd0f7d70671674185046cb2d57e0"
+    },
+    {
+      "path": "output/figures/q123/process_q1_diagnostics.png",
+      "bytes": 175422,
+      "sha256": "e89c97795b31c16918f1206c1e166ce8da7677993b577a3d79b9ed5b66c4e630"
+    },
+    {
+      "path": "output/figures/q123/process_q1_diagnostics.svg",
+      "bytes": 253989,
+      "sha256": "38ab198886be3d92a65b33ec295a16ff1039e64f2758bb1af5bd5022181e9660"
+    },
+    {
+      "path": "output/figures/q123/process_q2_policy_stability.png",
+      "bytes": 68998,
+      "sha256": "e49d504c7d84623a29134a64c14475ce0b53052e59db57cb4398f5c595be97e4"
+    },
+    {
+      "path": "output/figures/q123/process_q2_policy_stability.svg",
+      "bytes": 11519,
+      "sha256": "2fde808905c1f848b337508a8871e967f12a909408295b00cff80400ead9c0a3"
+    },
+    {
+      "path": "output/figures/q123/process_q3_group_selection.png",
+      "bytes": 100302,
+      "sha256": "de59121e4f59ead74bf1d24dfeb28570443582d8df7d1a0b27a9b7a2b5f99f9b"
+    },
+    {
+      "path": "output/figures/q123/process_q3_group_selection.svg",
+      "bytes": 21252,
+      "sha256": "a916c9e1cca68ad01265b739c302931436ef917467e445c4ac860fa01fc9f10e"
+    },
+    {
+      "path": "output/figures/q123/q123_figure_contracts.json",
+      "bytes": 1541,
+      "sha256": "907c5bc17a1b9003457cca954a0d98aafe73041469fd3872d86fa856b54b80dc"
+    },
+    {
+      "path": "output/figures/q123/raw_q1_y_week_bmi.png",
+      "bytes": 294696,
+      "sha256": "8775b5a054246d38dc2102e1f046b648dc5f92807c4790098bdcbebb84e5a43e"
+    },
+    {
+      "path": "output/figures/q123/raw_q1_y_week_bmi.svg",
+      "bytes": 192094,
+      "sha256": "293046783a556ba7e6074845050f3da21d6580940d3d80cf5a7edd5f41c48478"
+    },
+    {
+      "path": "output/figures/q123/raw_q2_bmi_distribution.png",
+      "bytes": 56877,
+      "sha256": "26a48cb8cab0c487a2960c6935048f93512e784d2d2e517da58b45301c690ca0"
+    },
+    {
+      "path": "output/figures/q123/raw_q2_bmi_distribution.svg",
+      "bytes": 16358,
+      "sha256": "ad6091d24694649e1c6a9407cb8022fbfff2eb537552e4402d431566c675b9aa"
+    },
+    {
+      "path": "output/figures/q123/raw_q3_feature_evidence.png",
+      "bytes": 88009,
+      "sha256": "1f902c40f8967e4df7005cad1fb8a9041c1dbf65a50df20249e59c1c2a2578e7"
+    },
+    {
+      "path": "output/figures/q123/raw_q3_feature_evidence.svg",
+      "bytes": 30032,
+      "sha256": "9cbf5923e61a01aa10e288a6a82f6e60ad22494a9892204239e74ed2d581bf18"
+    },
+    {
+      "path": "output/figures/q123/result_q1_effects.png",
+      "bytes": 54538,
+      "sha256": "e602144cc9c6c32d6e0cdc17a5006f9d62cad593eacff13ff036faf461cd45ff"
+    },
+    {
+      "path": "output/figures/q123/result_q1_effects.svg",
+      "bytes": 10809,
+      "sha256": "860c051ed419547e4f5a88fb16a59b935b791af4f72db2bd578153cb70d5b174"
+    },
+    {
+      "path": "output/figures/q123/result_q2_tradeoff.png",
+      "bytes": 67069,
+      "sha256": "dc957be6dacc585b806e9c86971451889b31956153748438d431b81a0a19dd37"
+    },
+    {
+      "path": "output/figures/q123/result_q2_tradeoff.svg",
+      "bytes": 10351,
+      "sha256": "ad160ea07ac969ffb41e85e0a41b096d8bb7e4b650735239c28d786f8b8b4e2f"
+    },
+    {
+      "path": "output/figures/q123/result_q3_final_policy.png",
+      "bytes": 100625,
+      "sha256": "f9ea097e15fdf75b3d9c2491a96a10cdd5923bbb69eccc86cae132ef3fd39c9d"
+    },
+    {
+      "path": "output/figures/q123/result_q3_final_policy.svg",
+      "bytes": 19684,
+      "sha256": "85154d2a089d8fda4121248ef204afc5939332490bfe1818de9b89fec83595b2"
+    },
+    {
+      "path": "output/figures/raw_q4_label_distribution.png",
+      "bytes": 56441,
+      "sha256": "a7ee2d41921c50d5728dc339f4b42317ed38f0a321604277481563cbdf267b8c"
+    },
+    {
+      "path": "output/figures/raw_q4_label_distribution.svg",
+      "bytes": 10775,
+      "sha256": "e686da383bfe63d7cd7527a9bc1f1102426c7a84e39b5bb2f6b4043800f9358e"
+    },
+    {
+      "path": "output/figures/raw_q4_quality_relationships.png",
+      "bytes": 121241,
+      "sha256": "e6141dc7eb567bf64c032fdbb7db957f8b8d49e31ef9663345877ffac2f800d5"
+    },
+    {
+      "path": "output/figures/raw_q4_quality_relationships.svg",
+      "bytes": 34597,
+      "sha256": "9a2a580f10c749101f1617facf3785499395fe88d1566600c0497722239ecf4a"
+    },
+    {
+      "path": "output/figures/raw_q4_zscore_distribution.png",
+      "bytes": 85755,
+      "sha256": "02465d163f9b8ca1a5695bd18c3216260d919ed48d4393c88003981fed669cc0"
+    },
+    {
+      "path": "output/figures/raw_q4_zscore_distribution.svg",
+      "bytes": 226087,
+      "sha256": "8b2d3d0d340e7255329931a915c7babaf89c75e0fca68b453279418bc1cdfecf"
+    },
+    {
+      "path": "output/figures/result_q4_calibration.png",
+      "bytes": 132295,
+      "sha256": "451124e267adff8074ede8adaea872b67c98c114ed50d2bc0987ace95b1768ff"
+    },
+    {
+      "path": "output/figures/result_q4_calibration.svg",
+      "bytes": 17593,
+      "sha256": "70c8436c9ea4d8aa973b15b6550d2e654d412ca2ca22cd18e11d274d102d4b36"
+    },
+    {
+      "path": "output/figures/result_q4_feature_importance.png",
+      "bytes": 115891,
+      "sha256": "3b5abb179106a3ef0116584133cbbfd8a3db12d539e01e9b99da67fb677e7085"
+    },
+    {
+      "path": "output/figures/result_q4_feature_importance.svg",
+      "bytes": 17834,
+      "sha256": "ab2902a1afb383ba39b6557746e55896556becb42ddf7bcdc7afb768b462da8a"
+    },
+    {
+      "path": "output/figures/result_q4_metrics_comparison.png",
+      "bytes": 51770,
+      "sha256": "af9dbf3988908243c223ac8f9760371e12554e7cf9e1187fa7ac4e15340c64c0"
+    },
+    {
+      "path": "output/figures/result_q4_metrics_comparison.svg",
+      "bytes": 18024,
+      "sha256": "dda89d0049a3f624b0f55527c3bc2413c34e642a2a661c0e99f5573136820535"
+    },
+    {
+      "path": "output/figures/result_q4_pr_curves.png",
+      "bytes": 142281,
+      "sha256": "c7ba41b6ce4ea461e028932351fbbdb024d8bbc784157f11b839242961e9410a"
+    },
+    {
+      "path": "output/figures/result_q4_pr_curves.svg",
+      "bytes": 19070,
+      "sha256": "b9fff5abaa3d3889ef2ffd8925ef343cd3c2d1c7f0a2ad68324bbebaa8906b43"
+    }
+  ]
+}

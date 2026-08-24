@@ -40,7 +40,7 @@ optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "C题" / "C题" / "附件.xlsx"
-OUT = ROOT / "outputs" / "C题" / "传统机器学习重构"
+OUT = ROOT / "C题" / "output" / "archive" / "legacy_analysis" / "传统机器学习重构"
 OUT.mkdir(parents=True, exist_ok=True)
 
 SEED = 2025

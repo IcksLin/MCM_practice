@@ -12,7 +12,7 @@ from scipy.signal import find_peaks, savgol_filter
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "B题" / "B题" / "附件"
-OUT_DIR = ROOT / "outputs" / "B题"
+OUT_DIR = ROOT / "B题" / "output" / "results"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DejaVu Sans"]

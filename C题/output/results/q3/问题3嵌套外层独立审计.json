@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source_sha256": "a567ba748fe6c68e18c13203992505a2e549d4f0b220f91d1be9c09821d0e530",
+  "selection_contract": "q=0.95预先固定；每个外层折仅以开发平均孕周选最优，0.25周内取最少组；外层指标不参与选择",
+  "outer_folds": 4,
+  "mean_safe_folds": 4,
+  "lcb_safe_folds": 3,
+  "mean_test_week": 18.948948439620082,
+  "mean_test_readiness": 0.9555824372275232,
+  "selected_group_counts": {
+    "1": 2,
+    "2": 2
+  },
+  "interpretation": "用于无外层选参的模型选择能力估计；最终整数切点35与18/22固定政策仍属于开发后稳定性审计。"
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "source": "早期参数AFT基线；仅保留分组比较所需字段",
+  "source_sha256": "db70dbf5f04f1ddfc3e40ab645fa43b65be48b5edd29994ca9f4fca1676103bf",
+  "bmi_grouping": {
+    "groups": 2,
+    "cuts": [34.50256132317717],
+    "counts": [227, 40]
+  }
+}
