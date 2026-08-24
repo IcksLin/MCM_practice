@@ -14,6 +14,10 @@
 - `C题/multifactor_timing.csv`：多因素模型时点。
 - `C题/male_longitudinal_and_timing.png`：重复测量和区间删失达标曲线。
 - `C题/female_group_cv_roc.png`：女胎患者级交叉验证 ROC。
+- `C题/机器学习扩展/模型比较.csv`：男胎回归/达标概率与女胎 AB 输出的模型比较。
+- `C题/机器学习扩展/机器学习时点.csv`：检测前特征分类器的 25 周达标概率检查。
+- `C题/机器学习扩展/*.png`：模型比较、校准、置换重要性和部分依赖图。
+- `pdf/B_C题数学建模试解报告.pdf`：XeLaTeX 生成的完整 B、C 题报告。
 
 ## 复现
 
@@ -22,9 +26,10 @@
 ```powershell
 E:\anaconda\python.exe analysis\b_solution.py
 E:\anaconda\python.exe analysis\c_solution.py
+E:\anaconda\python.exe analysis\c_ml_solution.py
 ```
 
-环境使用 NumPy、pandas、SciPy、statsmodels、scikit-learn、matplotlib 和 openpyxl；没有使用大参数机器学习模型。
+环境使用 NumPy、pandas、SciPy、statsmodels、scikit-learn、matplotlib 和 openpyxl。机器学习扩展只比较正则化线性模型与受限叶节点、带早停的直方图梯度提升树；调参与评估均按孕妇分组，未使用大参数模型。
 
 ## 重要解释限制
 
