@@ -1,3 +1,5 @@
 /B题.zip
 /C题.zip
 /tmp
+__pycache__/
+*.pyc

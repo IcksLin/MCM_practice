@@ -1,0 +1,389 @@
+{
+  "T13": {
+    "positive_records": 23,
+    "positive_women": 18,
+    "RegularizedLogit": {
+      "woman_roc_auc": 0.7454780361757105,
+      "woman_roc_auc_bootstrap_95ci": [
+        0.6269915656072187,
+        0.8457322929171668
+      ],
+      "woman_pr_auc": 0.28731320598419896,
+      "woman_pr_auc_bootstrap_95ci": [
+        0.162138092532808,
+        0.5090760132395804
+      ],
+      "woman_brier": 0.2303801993395017,
+      "woman_log_loss": 0.6631647926493464,
+      "record_roc_auc": 0.7419692215747796,
+      "record_pr_auc": 0.15114237713679815,
+      "screening_operating_point_at_least_90pct_sensitivity": {
+        "threshold": 0.2533707908124224,
+        "sensitivity": 1.0,
+        "specificity": 0.3953488372093023
+      }
+    },
+    "CatBoost": {
+      "woman_roc_auc": 0.6617140396210164,
+      "woman_roc_auc_bootstrap_95ci": [
+        0.513434939961845,
+        0.8047819717983618
+      ],
+      "woman_pr_auc": 0.2580538130071078,
+      "woman_pr_auc_bootstrap_95ci": [
+        0.13853368428808768,
+        0.4850962614844957
+      ],
+      "woman_brier": 0.1550214328942063,
+      "woman_log_loss": 0.4816880930586452,
+      "record_roc_auc": 0.6483639623487225,
+      "record_pr_auc": 0.09562680485356428,
+      "screening_operating_point_at_least_90pct_sensitivity": {
+        "threshold": 0.023644249480628803,
+        "sensitivity": 0.9444444444444444,
+        "specificity": 0.17829457364341086
+      }
+    },
+    "selected_model": "RegularizedLogit",
+    "catboost_outer_params": [
+      {
+        "iterations": 1800,
+        "depth": 5,
+        "learning_rate": 0.011775345341165115,
+        "l2_leaf_reg": 0.0701826541171374,
+        "random_strength": 0.006959558020458881,
+        "bagging_temperature": 2.878314279501416,
+        "rsm": 0.8420306971989165,
+        "border_count": 162,
+        "class_weights": [
+          1.0,
+          18.957885466845973
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 4,
+        "learning_rate": 0.01737827005049983,
+        "l2_leaf_reg": 0.1463522040361341,
+        "random_strength": 0.028408953014708957,
+        "bagging_temperature": 0.8722156490253624,
+        "rsm": 0.928238278540484,
+        "border_count": 89,
+        "class_weights": [
+          1.0,
+          4.382828067788313
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 8,
+        "learning_rate": 0.013258673594346843,
+        "l2_leaf_reg": 63.897885662791055,
+        "random_strength": 0.013878898254077501,
+        "bagging_temperature": 0.19629148722142686,
+        "rsm": 0.8671705330925358,
+        "border_count": 150,
+        "class_weights": [
+          1.0,
+          5.709445990785332
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 3,
+        "learning_rate": 0.06356889925586168,
+        "l2_leaf_reg": 9.70786069386561,
+        "random_strength": 0.013977897273173775,
+        "bagging_temperature": 3.391470444046885,
+        "rsm": 0.7295215061415018,
+        "border_count": 123,
+        "class_weights": [
+          1.0,
+          17.981665405146828
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      }
+    ]
+  },
+  "T18": {
+    "positive_records": 46,
+    "positive_women": 30,
+    "RegularizedLogit": {
+      "woman_roc_auc": 0.7199430199430199,
+      "woman_roc_auc_bootstrap_95ci": [
+        0.6109297644677706,
+        0.8168856468282252
+      ],
+      "woman_pr_auc": 0.41174966097203713,
+      "woman_pr_auc_bootstrap_95ci": [
+        0.2648455098422507,
+        0.6129723157577454
+      ],
+      "woman_brier": 0.2719038429924681,
+      "woman_log_loss": 0.768953411797783,
+      "record_roc_auc": 0.7450416115734619,
+      "record_pr_auc": 0.2725553711866532,
+      "screening_operating_point_at_least_90pct_sensitivity": {
+        "threshold": 0.3614423090736218,
+        "sensitivity": 0.9,
+        "specificity": 0.3333333333333333
+      }
+    },
+    "CatBoost": {
+      "woman_roc_auc": 0.7413105413105413,
+      "woman_roc_auc_bootstrap_95ci": [
+        0.6353723717360081,
+        0.8461121719545632
+      ],
+      "woman_pr_auc": 0.5047099294314819,
+      "woman_pr_auc_bootstrap_95ci": [
+        0.33588795456181525,
+        0.6717582152952424
+      ],
+      "woman_brier": 0.16178856284800575,
+      "woman_log_loss": 0.4952719515407135,
+      "record_roc_auc": 0.7250525005833398,
+      "record_pr_auc": 0.3359970907414028,
+      "screening_operating_point_at_least_90pct_sensitivity": {
+        "threshold": 0.19858641640988273,
+        "sensitivity": 0.9,
+        "specificity": 0.28205128205128205
+      }
+    },
+    "selected_model": "CatBoost",
+    "catboost_outer_params": [
+      {
+        "iterations": 1800,
+        "depth": 3,
+        "learning_rate": 0.12912491957330818,
+        "l2_leaf_reg": 0.1683749090395247,
+        "random_strength": 8.407093162523505,
+        "bagging_temperature": 2.7257077350177044,
+        "rsm": 0.6837202656599506,
+        "border_count": 78,
+        "class_weights": [
+          1.0,
+          5.378556296383453
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 8,
+        "learning_rate": 0.06926407241864477,
+        "l2_leaf_reg": 0.6736735834928712,
+        "random_strength": 6.668464328354757,
+        "bagging_temperature": 1.2772533936030408,
+        "rsm": 0.8598532209434644,
+        "border_count": 63,
+        "class_weights": [
+          1.0,
+          10.503945684973822
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 4,
+        "learning_rate": 0.03439490771901426,
+        "l2_leaf_reg": 6.3648917390286925,
+        "random_strength": 0.04659556543225807,
+        "bagging_temperature": 1.6128704645708658,
+        "rsm": 0.8458651640770146,
+        "border_count": 104,
+        "class_weights": [
+          1.0,
+          14.24458517631225
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 7,
+        "learning_rate": 0.018272366248535937,
+        "l2_leaf_reg": 0.4116047251808586,
+        "random_strength": 0.23338201448179857,
+        "bagging_temperature": 3.8227300502795343,
+        "rsm": 0.7902505355641921,
+        "border_count": 189,
+        "class_weights": [
+          1.0,
+          7.901877481962549
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      }
+    ]
+  },
+  "T21": {
+    "positive_records": 13,
+    "positive_women": 12,
+    "RegularizedLogit": {
+      "woman_roc_auc": 0.4444444444444445,
+      "woman_roc_auc_bootstrap_95ci": [
+        0.2577792939037963,
+        0.6487710437710437
+      ],
+      "woman_pr_auc": 0.15827426055206384,
+      "woman_pr_auc_bootstrap_95ci": [
+        0.043133610686375896,
+        0.3585299154658221
+      ],
+      "woman_brier": 0.2981228196484636,
+      "woman_log_loss": 0.8513386134272742,
+      "record_roc_auc": 0.5055873180873182,
+      "record_pr_auc": 0.09903304343978438,
+      "screening_operating_point_at_least_90pct_sensitivity": {
+        "threshold": 0.035153796236248785,
+        "sensitivity": 0.9166666666666666,
+        "specificity": 0.022222222222222223
+      }
+    },
+    "CatBoost": {
+      "woman_roc_auc": 0.5151234567901235,
+      "woman_roc_auc_bootstrap_95ci": [
+        0.3390055729139317,
+        0.675541740520627
+      ],
+      "woman_pr_auc": 0.0924389023076581,
+      "woman_pr_auc_bootstrap_95ci": [
+        0.04795048125624145,
+        0.20568455806284125
+      ],
+      "woman_brier": 0.16179794300052303,
+      "woman_log_loss": 0.4962285150927199,
+      "record_roc_auc": 0.5311850311850311,
+      "record_pr_auc": 0.024277105322058783,
+      "screening_operating_point_at_least_90pct_sensitivity": {
+        "threshold": 0.14323370709674413,
+        "sensitivity": 0.9166666666666666,
+        "specificity": 0.2
+      }
+    },
+    "selected_model": "RegularizedLogit",
+    "catboost_outer_params": [
+      {
+        "iterations": 1800,
+        "depth": 7,
+        "learning_rate": 0.03669223539680108,
+        "l2_leaf_reg": 29.776510907401608,
+        "random_strength": 1.8702871412818713,
+        "bagging_temperature": 0.4109831466521746,
+        "rsm": 0.7391840744631399,
+        "border_count": 125,
+        "class_weights": [
+          1.0,
+          5.2051211593900675
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 7,
+        "learning_rate": 0.015121587012809922,
+        "l2_leaf_reg": 23.571272759831338,
+        "random_strength": 0.005112756662879829,
+        "bagging_temperature": 2.4497725524253644,
+        "rsm": 0.6642793784182076,
+        "border_count": 106,
+        "class_weights": [
+          1.0,
+          19.737454294206096
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 7,
+        "learning_rate": 0.10028000306590074,
+        "l2_leaf_reg": 0.05941769265830868,
+        "random_strength": 0.5579948871226129,
+        "bagging_temperature": 0.6732826779768315,
+        "rsm": 0.6044909038267535,
+        "border_count": 60,
+        "class_weights": [
+          1.0,
+          5.6310951597455015
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      },
+      {
+        "iterations": 1800,
+        "depth": 4,
+        "learning_rate": 0.0672099448614789,
+        "l2_leaf_reg": 0.016995892803532368,
+        "random_strength": 1.6341620045978094,
+        "bagging_temperature": 3.358042085528528,
+        "rsm": 0.9386811815083381,
+        "border_count": 100,
+        "class_weights": [
+          1.0,
+          16.75562803064451
+        ],
+        "loss_function": "Logloss",
+        "eval_metric": "AUC",
+        "random_seed": 2025,
+        "thread_count": 4,
+        "verbose": false,
+        "allow_writing_files": false
+      }
+    ]
+  }
+}

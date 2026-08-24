@@ -1,0 +1,17 @@
+{
+  "checks_passed": {
+    "female_outer_complete": true,
+    "female_rows_equal_three_targets": true,
+    "male_one_row_per_woman": true,
+    "male_outer_complete": true,
+    "source_files_exist": true
+  },
+  "file_sha256": {
+    "C题/工作框架/freeze_validation.py": "d5b9a6135cda63dc82b6eac00808e562df59967b13b447e4b246074ef6bda205",
+    "C题/工作框架/女胎患者级折号.csv": "35bd8347a2c3e29e30502e96d4939cc170389f4fe8b0853e60b1a39940c8db1e",
+    "C题/工作框架/数据清单.json": "03315bdaf8f462dfb702f3cf475edde96f1a905948eadf7607587d10378cfea4",
+    "C题/工作框架/男胎患者级折号.csv": "c1c0e5916405040c2e8b9da7b91571011da28091898de32008f7d9b5f428001a",
+    "C题/工作框架/验证协议.md": "dd7e2486fabd6764f909e356b485f16ba0acb4ca8af61ba8c14b998fc7ab231c"
+  },
+  "schema_version": 1
+}
