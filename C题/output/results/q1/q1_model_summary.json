@@ -1,7 +1,7 @@
 {
   "task": "C题问题1",
   "input": {
-    "path": "data\\raw\\附件.xlsx",
+    "path": "data/raw/附件.xlsx",
     "sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af"
   },
   "sample": {

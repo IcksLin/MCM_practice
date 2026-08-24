@@ -3,7 +3,7 @@
 运行：
 
 ```powershell
-E:\\anaconda\\python.exe C题\\question123\\run_q123.py
+python scripts/run_all.py
 ```
 
 脚本依次完成：问题1混合模型重建、问题2冻结政策校验、问题3嵌套外层审计、冻结结果哈希核验、9幅证据图重绘和复现清单更新。任一步失败均返回非零退出码。

@@ -2,7 +2,7 @@
   "status": "passed",
   "built_at_utc": "2026-08-24T18:45:38.447843+00:00",
   "engine": "xelatex via latexmk",
-  "source": "docs\\C题总思路表.md",
+  "source": "docs/C题总思路表.md",
   "source_sha256": "e87843f802dfc7b5e04a89ac8bf7d0e18f9c57e46f396ba0e7408f7e54cd8719",
   "tex_sha256": "e378b573b1fd3fc4dcf822de8a041420ca0a17e6963bd9af11ed21c4f59dc5eb",
   "pdf_sha256": "5d41c1978109b4473818f8be3cfeaee8537831d9b99c1f2979b54193e699955e",

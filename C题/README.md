@@ -24,19 +24,25 @@ C题/
 轻量复现：
 
 ```powershell
-E:\anaconda\python.exe scripts\run_all.py
+python scripts/run_all.py
 ```
 
 完整复现（额外重跑问题3搜索、问题4嵌套验证和稳健性实验）：
 
 ```powershell
-E:\anaconda\python.exe scripts\run_all.py --full
+python scripts/run_all.py --full
 ```
+
+默认使用启动入口的 Python。若完整实验需要单独的 XGBoost 环境，可设置
+`C_PROJECT_PYTHON` 和 `C_PROJECT_XGB_PYTHON`；二者都应指向目标环境中的
+Python 可执行文件。项目不依赖固定盘符或固定 Conda 环境名。
 
 仅重新生成思路PDF：
 
 ```powershell
-E:\anaconda\python.exe scripts\build_thoughts_pdf.py
+python scripts/build_thoughts_pdf.py
 ```
+
+PDF 构建会从 `PATH` 查找 `latexmk`；也可通过 `LATEXMK` 环境变量指定。
 
 当前推荐口径及实验数据以 `docs/C题总思路表.md` 和 `output/reports/C题总思路表.pdf` 为准。所有建议仅用于数学建模与研究性分流，不构成临床诊断或处置意见。

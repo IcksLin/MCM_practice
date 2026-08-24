@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import importlib.util
 import json
 import sys
 from pathlib import Path
@@ -18,14 +17,13 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 RESULTS = PROJECT_ROOT / "output" / "results" / "q4"
 FIGURES = PROJECT_ROOT / "output" / "figures"
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
-from utils.plot_style import PALETTE, add_panel_labels, apply_publication_style, publication_subplots
-
-EXPORTER = Path(r"C:\Users\admin\.codex\skills\math-modeling\tools\figure\scripts\export_figure.py")
-spec = importlib.util.spec_from_file_location("q4_export_figure", EXPORTER)
-export_module = importlib.util.module_from_spec(spec)
-assert spec.loader is not None
-spec.loader.exec_module(export_module)
-export_figure = export_module.export_figure
+from utils.plot_style import (  # noqa: E402
+    PALETTE,
+    add_panel_labels,
+    apply_publication_style,
+    export_figure,
+    publication_subplots,
+)
 
 LABELS = ("T13", "T18", "T21")
 COLORS = [PALETTE["primary"], PALETTE["secondary"], PALETTE["positive"]]

@@ -11,4 +11,4 @@
 
 当前便于解释的建议为 BMI<35 第18周、BMI≥35 第22周。它是全数据开发后的固定政策内部稳定性建议，不能称为无偏独立测试结果；`nested_q3_audit.py`给出的外层审计用于估计该类建模流程的泛化边界，其中均值安全4/4、保守下界安全3/4。
 
-精简结果位于 `../results/q3/`，统一复现请运行 `E:\\anaconda\\python.exe C题\\question123\\run_q123.py`。
+精简结果位于 `../results/q3/`，统一复现请运行 `python scripts/run_all.py`。

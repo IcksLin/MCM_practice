@@ -1,11 +1,11 @@
 {
-  "generated_at_utc": "2026-08-24T18:47:18.309036+00:00",
+  "generated_at_utc": "2026-08-24T19:01:19.828911+00:00",
   "project_root": "C题",
   "reproduction": {
-    "light": "E:\\anaconda\\python.exe scripts\\run_all.py",
-    "full": "E:\\anaconda\\python.exe scripts\\run_all.py --full"
+    "light": "python scripts/run_all.py",
+    "full": "python scripts/run_all.py --full"
   },
-  "file_count": 146,
+  "file_count": 148,
   "files": [
     {
       "path": "data/raw/C题.pdf",
@@ -59,8 +59,8 @@
     },
     {
       "path": "docs/q4_题目分析报告.md",
-      "bytes": 14090,
-      "sha256": "df413332ed1c90a0aee6f3131b456c40dc0024e9e9f468f39bd67d56085a2c86"
+      "bytes": 14094,
+      "sha256": "a2a2903c025b6b5d5805f57d9361d09f082616fdd48c790c536e7c9fbaecd6d9"
     },
     {
       "path": "docs/使用指南.md",
@@ -84,8 +84,8 @@
     },
     {
       "path": "algorithms/q1/solve_q1.py",
-      "bytes": 7275,
-      "sha256": "f3c542af75a77896742716830cc1cb2e6946c8461ebfe356e808d612b70abc2c"
+      "bytes": 7281,
+      "sha256": "43675bbdad1f37987d5f8bed0f265bd9710352cbd250814d4e4e00319f20d069"
     },
     {
       "path": "algorithms/q2/policy_sensitivity_v11.py",
@@ -104,8 +104,8 @@
     },
     {
       "path": "algorithms/q4/patient_triage_v6.py",
-      "bytes": 8326,
-      "sha256": "baf769ea6d5869600f66cb700844357fe17b1fedb69cd4e8d4813b20e4766a32"
+      "bytes": 8332,
+      "sha256": "c20559ceda24a5470a92fa4dabe7eadd897b757db4212c10634c19edb5cda842"
     },
     {
       "path": "algorithms/q4/run_q4_full.py",
@@ -119,13 +119,13 @@
     },
     {
       "path": "scripts/build_manifest.py",
-      "bytes": 1525,
-      "sha256": "3aca8705e7777d81ee61afe17a5189aa0e18cd19591a11b5b2190589e0fe51ce"
+      "bytes": 1491,
+      "sha256": "88d0dd5b85a1b643e2108238b39aa58e51fd0ac11193deb07fad028420772651"
     },
     {
       "path": "scripts/build_thoughts_pdf.py",
-      "bytes": 1986,
-      "sha256": "bb05b8ae07471c5d9be3a3c9bfbd43eba7948b7c1873ac190aeef95c3c09da44"
+      "bytes": 2084,
+      "sha256": "441bf67698a9f5383d46634e2560f2436491a5ee99cd91bd2c2a030b7e179b66"
     },
     {
       "path": "scripts/render_thoughts_tex.py",
@@ -134,8 +134,8 @@
     },
     {
       "path": "scripts/run_all.py",
-      "bytes": 1339,
-      "sha256": "16ce09acc76a88f4734134df39471a45ce5781626fad42fccad4824b231568f0"
+      "bytes": 1559,
+      "sha256": "42511a1b9ace4a69e27f041b4625d956cc8e3f5d7a0435939b7c9a7e422a1761"
     },
     {
       "path": "scripts/utils/plot_style.py",
@@ -154,13 +154,13 @@
     },
     {
       "path": "scripts/visualization/plot_q4.py",
-      "bytes": 13587,
-      "sha256": "8b590157c666c7667033edd3e88bbceb7543f32cb38c52a817de994e5942959d"
+      "bytes": 13273,
+      "sha256": "caaf6f5939c89a311160ef0de188de259518517e3847cfb4ddbf1cde8963e744"
     },
     {
       "path": "output/results/cross_question/复现清单.json",
-      "bytes": 11347,
-      "sha256": "289418500fa1fcaf9c00af6e2fd6354bd660b67128e7a36a3c76cd60016f0844"
+      "bytes": 11317,
+      "sha256": "8299ba247dc44a9a63a00ced8d28ee2a941876fd26a0abf59c6a24ad7248cefc"
     },
     {
       "path": "output/results/q1/q1_model_coefficients.csv",
@@ -169,8 +169,8 @@
     },
     {
       "path": "output/results/q1/q1_model_summary.json",
-      "bytes": 1936,
-      "sha256": "31841773ceba1f3353ff2e229af36606c7ee70b1dda31bc80ba79504ea09a0fd"
+      "bytes": 1934,
+      "sha256": "2278fe70c0394591f1c4a214245865ea31e87c3e0b205a4e64596e3eeb25b45f"
     },
     {
       "path": "output/results/q1/q1_record_fit.csv",
@@ -434,8 +434,8 @@
     },
     {
       "path": "output/reports/C题总思路表.pdf.build.json",
-      "bytes": 444,
-      "sha256": "2b9c914c977a6f152972bb5b1c81666ee4ea4e836f947ec2a356241e712e0592"
+      "bytes": 443,
+      "sha256": "5581eca73ed6ac349d36988be76267afec496e649de5289b52f4183d96956ca4"
     },
     {
       "path": "output/reports/legacy/C题问题1-3统合报告_v1.docx",
@@ -446,6 +446,16 @@
       "path": "output/reports/legacy/C题问题4最终报告_v5.docx",
       "bytes": 799555,
       "sha256": "04e0e2b8ca8d11df706b9ef78a7b3c5e353fcfccf95511a3e1f218bfb66433c4"
+    },
+    {
+      "path": "output/figures/attachments/C题_女胎检测数据_可视化总览.png",
+      "bytes": 367442,
+      "sha256": "1e81275bd6bcee67dbffa56f9567a985958ccd5e9d7fe53881b3bd454e39773d"
+    },
+    {
+      "path": "output/figures/attachments/C题_男胎检测数据_可视化总览.png",
+      "bytes": 660876,
+      "sha256": "4d855a7a7307fb4a1e2df141eef411bab4733e6f2da5ccd66368c6ba85702b6c"
     },
     {
       "path": "output/figures/grayscale/process_q4_fold_balance_grayscale.png",

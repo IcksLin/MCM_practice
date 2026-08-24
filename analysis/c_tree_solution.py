@@ -39,7 +39,7 @@ warnings.filterwarnings("ignore", category=optuna.exceptions.ExperimentalWarning
 optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "C题" / "C题" / "附件.xlsx"
+SOURCE = ROOT / "C题" / "data" / "raw" / "附件.xlsx"
 OUT = ROOT / "C题" / "output" / "archive" / "legacy_analysis" / "传统机器学习重构"
 OUT.mkdir(parents=True, exist_ok=True)
 

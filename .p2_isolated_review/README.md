@@ -5,7 +5,7 @@
 ## 问题1—3统一入口
 
 ```powershell
-E:\\anaconda\\python.exe C题\\question123\\run_q123.py
+python scripts/run_all.py
 ```
 
 该命令重建问题1、执行问题3嵌套外层独立审计、校验问题2/3冻结结果哈希、重绘9幅证据图，并更新 `results/q123/复现清单.json`。历史大规模搜索不会在默认入口中重复运行。

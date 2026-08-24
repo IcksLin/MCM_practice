@@ -12,7 +12,7 @@
     "q3": 20260824
   },
   "commands": [
-    "E:\\anaconda\\python.exe C题\\question123\\run_q123.py"
+    "python scripts/run_all.py"
   ],
   "runtime": {
     "python": "3.13.5",

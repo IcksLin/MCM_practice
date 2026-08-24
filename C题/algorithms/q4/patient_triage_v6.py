@@ -155,7 +155,7 @@ def main() -> None:
     patient_actions.to_csv(OUT / "患者级最终分流.csv", index=False, encoding="utf-8-sig")
     conclusion = {
         "schema_version": 1,
-        "source": str(SOURCE.relative_to(ROOT)),
+        "source": SOURCE.relative_to(ROOT).as_posix(),
         "patients": len(frame),
         "patient_target": "同一孕妇任一记录出现附件筛查异常标签（记录y_any最大值）",
         "patients_with_inconsistent_record_labels": int((~frame["标签是否跨记录一致"]).sum()),

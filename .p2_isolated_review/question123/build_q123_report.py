@@ -315,7 +315,7 @@ def main():
     heading(doc, "附录A 复现与文件范围", 1)
     manifest = json.loads((PROJECT / "results" / "q123" / "复现清单.json").read_text(encoding="utf-8"))
     manifest_items = sum(len(manifest[key]) for key in ("code", "results", "figures"))
-    body(doc, f"唯一轻量入口为 E:\\anaconda\\python.exe C题\\question123\\run_q123.py。它重建问题1、校验问题2冻结政策、重建问题3无外层选参审计、校验问题2/3冻结结果哈希、重绘9组证据图并生成{manifest_items}项复现清单。历史大规模搜索不在默认命令中重跑。附件SHA-256为14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af。")
+    body(doc, f"唯一轻量入口为 python scripts/run_all.py。它重建问题1、校验问题2冻结政策、重建问题3无外层选参审计、校验问题2/3冻结结果哈希、重绘9组证据图并生成{manifest_items}项复现清单。历史大规模搜索不在默认命令中重跑。附件SHA-256为14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af。")
     body(doc, "本报告为建模草稿与内部分析参考；正式参赛前仍需结合官方当年格式、队伍信息和篇幅要求二次排版。")
 
     doc.save(OUT)

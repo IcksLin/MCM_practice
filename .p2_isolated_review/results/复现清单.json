@@ -19,11 +19,11 @@
     "bootstrap_repeats": 2000
   },
   "commands": [
-    "E:\\anaconda\\envs\\yolov_env\\python.exe question4\\run_q4_full.py",
-    "E:\\anaconda\\envs\\yolov_env\\python.exe question4\\plot_q4.py",
-    "E:\\anaconda\\envs\\yolov_env\\python.exe question4\\build_manifest.py"
+    "python question4/run_q4_full.py",
+    "python question4/plot_q4.py",
+    "python question4/build_manifest.py"
   ],
-  "working_directory": "D:\\时光归墟\\赛事\\数模\\practice\\C题",
+  "working_directory": ".",
   "files": {
     "C题\\附件.xlsx": {
       "sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",

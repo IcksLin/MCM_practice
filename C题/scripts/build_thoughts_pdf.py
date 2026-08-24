@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -14,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "docs" / "C题总思路表.md"
 BUILD = ROOT / "output" / "latex" / "thoughts"
 PDF = ROOT / "output" / "reports" / "C题总思路表.pdf"
-LATEXMK = shutil.which("latexmk") or r"D:\develop_env\texlive\2026\bin\windows\latexmk.exe"
+LATEXMK = os.environ.get("LATEXMK") or shutil.which("latexmk")
 BLOCKERS = ("Overfull", "Underfull", "Missing character", "LaTeX Warning", "Package Warning")
 
 
@@ -23,6 +24,8 @@ def sha256(path: Path) -> str:
 
 
 def main() -> None:
+    if LATEXMK is None:
+        raise RuntimeError("未找到latexmk；请将TeX发行版加入PATH后重试")
     subprocess.run([sys.executable, str(ROOT / "scripts" / "render_thoughts_tex.py")], check=True)
     subprocess.run([LATEXMK, "-xelatex", "-interaction=nonstopmode", "-halt-on-error", "main.tex"], cwd=BUILD, check=True)
     log = (BUILD / "main.log").read_text(encoding="utf-8", errors="replace")
@@ -35,7 +38,7 @@ def main() -> None:
         "status": "passed",
         "built_at_utc": datetime.now(timezone.utc).isoformat(),
         "engine": "xelatex via latexmk",
-        "source": str(SOURCE.relative_to(ROOT)),
+        "source": SOURCE.relative_to(ROOT).as_posix(),
         "source_sha256": sha256(SOURCE),
         "tex_sha256": sha256(BUILD / "main.tex"),
         "pdf_sha256": sha256(PDF),

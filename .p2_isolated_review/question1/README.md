@@ -5,7 +5,7 @@
 运行：
 
 ```powershell
-& 'E:\anaconda\python.exe' 'question1\solve_q1.py'
+python question1/solve_q1.py
 ```
 
 结果写入`results/q1/`。同一孕妇的多次检测通过随机截距处理，显著性结论以系数检验和基础/扩展模型似然比检验共同给出。

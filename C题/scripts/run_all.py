@@ -3,13 +3,21 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PY_GENERAL = Path(r"E:\anaconda\python.exe")
-PY_XGB = Path(r"E:\anaconda\envs\yolov_env\python.exe")
+
+
+def interpreter(environment_name: str) -> Path:
+    """允许按需覆盖解释器；默认使用启动本脚本的Python。"""
+    return Path(os.environ.get(environment_name, sys.executable)).expanduser().resolve()
+
+
+PY_GENERAL = interpreter("C_PROJECT_PYTHON")
+PY_XGB = interpreter("C_PROJECT_XGB_PYTHON")
 
 
 def run(python: Path, relative: str, *args: str) -> None:

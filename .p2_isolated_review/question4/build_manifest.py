@@ -40,9 +40,9 @@ def main() -> None:
         "fixed_parameters": {"seed": 20250824, "outer_folds": 4, "inner_folds": 3,
                              "split_search_repeats": 2000, "bootstrap_repeats": 2000},
         "commands": [
-            r"E:\anaconda\envs\yolov_env\python.exe question4\run_q4_full.py",
-            r"E:\anaconda\envs\yolov_env\python.exe question4\plot_q4.py",
-            r"E:\anaconda\envs\yolov_env\python.exe question4\build_manifest.py",
+            "python question4/run_q4_full.py",
+            "python question4/plot_q4.py",
+            "python question4/build_manifest.py",
         ],
         "working_directory": str(ROOT),
         "files": {str(p.relative_to(ROOT)): {"sha256": sha256(p), "bytes": p.stat().st_size} for p in files if p.is_file()},

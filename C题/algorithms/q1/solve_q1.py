@@ -162,7 +162,7 @@ def main() -> None:
     }
     summary = {
         "task": "C题问题1",
-        "input": {"path": str(INPUT.relative_to(ROOT)), "sha256": sha256(INPUT)},
+        "input": {"path": INPUT.relative_to(ROOT).as_posix(), "sha256": sha256(INPUT)},
         "sample": descriptive,
         "standardization": scales,
         "formulas": {

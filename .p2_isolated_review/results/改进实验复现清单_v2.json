@@ -7,12 +7,12 @@
     "read_only": true
   },
   "commands": [
-    "E:\\anaconda\\envs\\yolov_env\\python.exe question3/extended_group_search_v3.py",
-    "E:\\anaconda\\envs\\yolov_env\\python.exe question4/patient_triage_v6.py",
-    "E:\\anaconda\\python.exe question2/policy_sensitivity_v11.py",
-    "E:\\anaconda\\python.exe question1/diagnostics_v2.py --repeats 200"
+    "python question3/extended_group_search_v3.py",
+    "python question4/patient_triage_v6.py",
+    "python question2/policy_sensitivity_v11.py",
+    "python question1/diagnostics_v2.py --repeats 200"
   ],
-  "unique_reproduction_command": "E:\\anaconda\\python.exe question123\\run_improvements_v2.py",
+  "unique_reproduction_command": "python question123/run_improvements_v2.py",
   "runtime": {
     "launcher_python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
     "platform": "Windows-11-10.0.26200-SP0"

@@ -25,7 +25,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "C题" / "C题" / "附件.xlsx"
+SOURCE = ROOT / "C题" / "data" / "raw" / "附件.xlsx"
 OUT_DIR = ROOT / "C题" / "output" / "archive" / "legacy_analysis"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 

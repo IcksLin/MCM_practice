@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -21,7 +22,7 @@ FIGURES = ROOT / "figures"
 DOC_DIR = ROOT / "doc"
 OUTPUT = DOC_DIR / "C题问题4最终报告_v5.docx"
 
-DOCX_SCRIPTS = Path(r"C:\Users\admin\.codex\skills\math-modeling\tools\docx\scripts")
+DOCX_SCRIPTS = Path(os.environ["MATH_MODELING_DOCX_SCRIPTS"]).expanduser().resolve()
 sys.path.insert(0, str(DOCX_SCRIPTS))
 import paper_format as pf
 

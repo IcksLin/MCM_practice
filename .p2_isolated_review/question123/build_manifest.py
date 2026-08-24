@@ -48,7 +48,7 @@ def main() -> None:
         "scope": "C题问题1—3精简工程的编程阶段，不含Word排版产物",
         "input": {"path": "C题/附件.xlsx", "sha256": digest(attachment), "read_only": True},
         "random_seeds": {"q1": "无随机抽样", "q2": 2025, "q3": 20260824},
-        "commands": ["E:\\anaconda\\python.exe C题\\question123\\run_q123.py"],
+        "commands": ["python scripts/run_all.py"],
         "runtime": {"python": platform.python_version(), "platform": platform.platform(), "packages": packages},
         "code": records(code),
         "results": records(result_files),

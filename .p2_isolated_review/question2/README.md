@@ -9,4 +9,4 @@
 
 历史AFT训练、Optimal Binning搜索、人数敏感性、时点校准和误差审计脚本已在结果冻结并形成统合报告后删除，避免与权威入口混用。冻结证据位于 `../results/q2/`。三级题面风险下的主推荐为 BMI<34.357 第18周、BMI≥34.357 第22周；16/18仅作为特定连续风险权重下的敏感性结论。
 
-统一复现请运行 `E:\\anaconda\\python.exe C题\\question123\\run_q123.py`。
+统一复现请运行 `python scripts/run_all.py`。

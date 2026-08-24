@@ -27,8 +27,8 @@ def main() -> None:
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "project_root": ROOT.name,
         "reproduction": {
-            "light": r"E:\anaconda\python.exe scripts\run_all.py",
-            "full": r"E:\anaconda\python.exe scripts\run_all.py --full",
+            "light": "python scripts/run_all.py",
+            "full": "python scripts/run_all.py --full",
         },
         "file_count": len(files),
         "files": files,
