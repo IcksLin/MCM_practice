@@ -1,0 +1,27 @@
+{
+  "seed": 20250825,
+  "bootstrap_repeats": 400,
+  "block_length_points": 2,
+  "reproduce_command": "\"E:\\anaconda\\python.exe\" scripts/run_b.py",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "dependencies": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.0"
+  },
+  "inputs": {
+    "附件1.xlsx": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+    "附件2.xlsx": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+    "附件3.xlsx": "79e9f66a00409f1d1130d9f4f3d76b4d5e5a1ccd3ac2d24dc0af8ecc583d0ec8",
+    "附件4.xlsx": "9cf1400404c4560958da06685beb8c2e1e4df5918a6e13863663a54440ba12e3"
+  },
+  "outputs": [
+    "results/b_results.json",
+    "results/b_summary.csv",
+    "results/robustness_summary.csv",
+    "results/sensitivity_details.csv",
+    "results/final_recommendations.csv"
+  ]
+}

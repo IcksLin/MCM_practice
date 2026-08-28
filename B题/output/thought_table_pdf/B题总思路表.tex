@@ -1,0 +1,740 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=1.65cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,array,pdflscape,xcolor,enumitem,listings,hyperref}
+\setmainfont{Times New Roman}
+\setsansfont{Microsoft YaHei}
+\setmonofont{Microsoft YaHei}
+\hypersetup{hidelinks,pdfauthor={数学建模项目},pdftitle={B题总思路表}}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.35em}
+\setlength{\LTpre}{0.35em}
+\setlength{\LTpost}{0.35em}
+\renewcommand{\arraystretch}{1.28}
+\setlist{nosep,leftmargin=2.2em}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,columns=fullflexible}
+\pagestyle{plain}
+\begin{document}
+\begin{center}\LARGE\bfseries B题总思路表\end{center}
+\begin{quote}\itshape 用途：作为论文写作底稿，记录最终采用的数据处理、物理模型、求解算法、验证方案和结论口径。只保留已经完成并验证的内容，不写旧实验结论。\end{quote}
+\section*{一、总体路线}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{阶段} & \textbf{核心任务} & \textbf{当前状态} \\ \hline
+\endfirsthead
+\hline \textbf{阶段} & \textbf{核心任务} & \textbf{当前状态} \\ \hline
+\endhead
+1. 数据清洗 & 核验附件、统一单位、检查波数顺序、缺失值和反射率越界 & 已完成 \\ \hline
+2. 光谱结构构造 & 选择透明频段、分离慢变背景、提取干涉残差 & 已完成 \\ \hline
+3. 基础物理模型 & 推导单次反射相位差及色散—角度修正厚度公式 & 已完成 \\ \hline
+4. 厚度求解 & FFT周期初始化、峰谷定位、亚网格校正和局部厚度汇总 & 已完成 \\ \hline
+5. 多光束诊断 & 建立Airy/多谐波模型并判断是否需要修正厚度 & 已完成 \\ \hline
+6. 验证与稳健性 & 双角度验证、相邻阶Bootstrap、连续留块验证和参数敏感性 & 已完成 \\ \hline
+7. 最终建议 & 给出SiC与Si厚度、区间、适用范围和限制 & 已完成 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\section*{二、数据清洗}
+\begin{landscape}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{编号} & \textbf{数据问题} & \textbf{当前处理方案} & \textbf{处理对象/阶段} & \textbf{处理理由} & \textbf{状态} \\ \hline
+\endfirsthead
+\hline \textbf{编号} & \textbf{数据问题} & \textbf{当前处理方案} & \textbf{处理对象/阶段} & \textbf{处理理由} & \textbf{状态} \\ \hline
+\endhead
+1 & 四个附件必须确认波数是否缺失、重复或乱序。 & 核验每个工作簿形状、首末波数、有限值和波数单调性；形状不是7469行2列或波数不严格递增时停止运行。 & 全部附件、读取阶段 & 厚度由相邻条纹极值的波数差计算，波数轴错误会直接造成厚度偏差。 & 已确认 \\ \hline
+2 & 第一列为波数、第二列为百分数反射率，模型内部量纲不同。 & 波数保留为\texttt{cm\textsuperscript{-}¹}；反射率进入模型前除以100，作图时再乘100；厚度由\texttt{cm}换算为\texttt{μm}时乘\texttt{10\textsuperscript{4}}。 & 全部附件、模型输入和结果输出 & 避免波长、波数、百分数和无量纲数混用。 & 已确认 \\ \hline
+3 & 附件2有262个反射率值超过100\%，占3.5078\%，最大约102.7394\%。 & 主分析保留原始相对仪器读数；另将反射率截断到\texttt{[0,100\%]}重新计算厚度。 & 附件2、异常处理与稳健性 & 越界幅度较小，更符合仪器相对标定或噪声；直接删除可能无依据地改变峰形。 & 已确认 \\ \hline
+4 & SiC在低波数声子响应区存在强色散和吸收。 & SiC主估计使用1500—4000 \texttt{cm\textsuperscript{-}¹}；Si使用1000—4000 \texttt{cm\textsuperscript{-}¹}。 & 频段选择 & 避开SiC约800—1000 \texttt{cm\textsuperscript{-}¹}强声子区，同时保留足够条纹。 & 已确认 \\ \hline
+5 & 原始反射谱含慢变背景和幅值包络。 & 用宽窗Savitzky–Golay平滑估计背景；残差除以局部幅值尺度后寻峰。 & 预处理与极值定位 & 背景主要影响幅值，不应改变用于厚度计算的原始波数坐标。 & 已确认 \\ \hline
+6 & 相邻7469个谱点来自连续扫描，具有强自相关。 & 验证按连续波数块留出；不确定性分析对相邻干涉级次局部厚度序列按块长2进行400次Bootstrap。 & 验证、不确定性 & 防止随机拆点泄漏，也避免用伪独立样本得到虚假窄区间。 & 已确认 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\end{landscape}
+\section*{已确认规则}
+\subsection*{规则 DC-01：数据身份与波数轴}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{检查项} & \textbf{当前结果} & \textbf{执行要求} \\ \hline
+\endfirsthead
+\hline \textbf{检查项} & \textbf{当前结果} & \textbf{执行要求} \\ \hline
+\endhead
+工作表结构 & 每个附件均为1个工作表、7469行2列 & 结构变化时停止运行，不猜测列含义 \\ \hline
+波数范围 & 约399.6747—4000.122 \texttt{cm\textsuperscript{-}¹} & 波数必须为有限数值 \\ \hline
+波数顺序 & 四个附件均严格递增 & 不自动排序掩盖原始错误 \\ \hline
+缺失与重复 & 当前无波数缺失和重复 & 发现异常时先回到数据核验 \\ \hline
+输入身份 & 四个附件SHA-256写入\texttt{results/复现清单.json} & 每次复现先核对哈希 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{规则 DC-02：单位统一}
+附件第二列百分数反射率\texttt{R\_\%}进入模型时转换为
+
+
+\[
+R=\frac{R_{\%}}{100}.
+\]
+相邻同类极值在光学坐标中的间距为\texttt{Δq}时，厚度以微米表示为
+
+
+\[
+\hat d=\frac{10^4}{\Delta q}.
+\]
+执行要求：\texttt{10\textsuperscript{4}}只承担厘米到微米的换算，不能重复乘除；论文表格必须明确厚度单位为\texttt{μm}。
+
+
+\subsection*{规则 DC-03：反射率越界处理}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{方案} & \textbf{处理方式} & \textbf{用途} \\ \hline
+\endfirsthead
+\hline \textbf{方案} & \textbf{处理方式} & \textbf{用途} \\ \hline
+\endhead
+主方案 & 保留附件2超过100\%的相对仪器读数 & 避免无依据改变峰形和极值位置 \\ \hline
+敏感性方案 & 把反射率限制到0—100\%后重新计算 & 判断越界值是否实质影响厚度 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+当前截断方案与主方案厚度基本一致。因此可以说明越界值对厚度结果影响很小，但不能声称仪器不存在系统误差。
+
+
+\subsection*{规则 DC-04：频段与背景}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{材料} & \textbf{主频段/\texttt{cm\textsuperscript{-}¹}} & \textbf{背景处理} & \textbf{选择理由} \\ \hline
+\endfirsthead
+\hline \textbf{材料} & \textbf{主频段/\texttt{cm\textsuperscript{-}¹}} & \textbf{背景处理} & \textbf{选择理由} \\ \hline
+\endhead
+4H-SiC & 1500—4000 & 宽窗Savitzky–Golay趋势 & 避开强声子吸收区，保留透明区条纹 \\ \hline
+Si & 1000—4000 & 宽窗Savitzky–Golay趋势 & 扩大可用基本周期信息 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+执行要求：平滑结果只用于背景分离和极值检测，厚度计算始终使用极值对应的原始波数位置。
+
+
+\subsection*{规则 DC-05：相关性与重采样单位}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{环节} & \textbf{当前处理} \\ \hline
+\endfirsthead
+\hline \textbf{环节} & \textbf{当前处理} \\ \hline
+\endhead
+模型比较 & 采用5折连续波数留块，不随机打散谱点 \\ \hline
+验证隔离 & 每个验证块两侧各排除96个谱点 \\ \hline
+Bootstrap对象 & 同类相邻极值形成的局部厚度序列 \\ \hline
+Bootstrap块长 & 2个相邻干涉级次 \\ \hline
+Bootstrap次数 & 每条光谱400次 \\ \hline
+区间解释 & 只描述有限条纹级次抽样波动，不是完整测量学置信区间 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\section*{三、第一问解答}
+\subsection*{1. 数据特征分析}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{项目} & \textbf{数据或物理特征} & \textbf{对建模的影响} \\ \hline
+\endfirsthead
+\hline \textbf{项目} & \textbf{数据或物理特征} & \textbf{对建模的影响} \\ \hline
+\endhead
+干涉来源 & 空气—外延层界面反射光与外延层—衬底界面反射光叠加 & 需要从两束光的光程差推导相位差 \\ \hline
+斜入射 & 入射角为10°或15°，层内角度与空气侧角度不同 & 必须使用Snell定律修正传播方向 \\ \hline
+材料色散 & SiC与Si折射率随波数变化 & 不能机械使用常折射率条纹公式 \\ \hline
+慢变背景 & 反射率幅值同时受界面、吸收、包络和仪器响应影响 & 厚度应主要由相位周期而非绝对幅值决定 \\ \hline
+界面相移 & 反射界面可能引入常数相移 & 常数相移改变整体位置，但不改变相邻同类极值间距 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+第一问的核心任务是建立外延层厚度与红外反射条纹之间的物理关系，不直接计算最终样品厚度。
+
+
+\subsection*{2. 数据预处理方案}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{处理步骤} & \textbf{具体做法} & \textbf{目的} \\ \hline
+\endfirsthead
+\hline \textbf{处理步骤} & \textbf{具体做法} & \textbf{目的} \\ \hline
+\endhead
+单位转换 & 反射率百分数除以100，波数保持\texttt{cm\textsuperscript{-}¹} & 统一物理量纲 \\ \hline
+频段选择 & 按材料选择透明条纹区 & 使弱吸收近似更合理 \\ \hline
+背景分离 & Savitzky–Golay宽窗趋势与原谱相减 & 暴露干涉周期结构 \\ \hline
+局部标准化 & 残差除以平滑绝对幅值尺度 & 缓解包络衰减造成的阈值不一致 \\ \hline
+波数位置保留 & 寻峰后仍使用原始网格及亚网格插值位置 & 不让平滑改变厚度计算坐标 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{3. 模型选取及缘由}
+主模型选用色散修正的单次反射干涉模型，原因如下：
+
+
+\begin{enumerate}
+\item 直接对应题面所述两束反射光的干涉过程。
+\item 可从Snell定律和光程差得到明确厚度公式，物理可解释性强。
+\item 将折射率写成波数函数，避免常折射率近似在宽频段积累偏差。
+\item 厚度由基本相位周期确定，可与后续多光束模型共享同一相位。
+\item 问题属于物理反演，不需要用黑箱回归替代可推导模型。
+\end{enumerate}
+\subsection*{4. 模型及其参数介绍}
+由Snell定律，层内折射角满足
+
+
+\[
+\sin\theta_t(\sigma)=\frac{\sin\theta_0}{n(\sigma)}.
+\]
+两束反射光的基本相位差为
+
+
+\[
+\Phi(\sigma)=4\pi d\sigma\sqrt{n^2(\sigma)-\sin^2\theta_0}+\phi_r.
+\]
+反射谱写为
+
+
+\[
+R(\sigma)=B(\sigma)+A(\sigma)\cos\Phi(\sigma)+\varepsilon(\sigma).
+\]
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{参数} & \textbf{含义} \\ \hline
+\endfirsthead
+\hline \textbf{参数} & \textbf{含义} \\ \hline
+\endhead
+\texttt{d} & 外延层厚度，单位\texttt{μm} \\ \hline
+\texttt{θ\textsubscript{0}} & 空气侧入射角 \\ \hline
+\texttt{θt} & 外延层内部折射角 \\ \hline
+\texttt{n(σ)} & 材料相折射率的波数函数 \\ \hline
+\texttt{φr} & 界面反射造成的常数相移 \\ \hline
+\texttt{B(σ)} & 相对相位缓慢变化的背景 \\ \hline
+\texttt{A(σ)} & 干涉条纹幅值包络 \\ \hline
+\texttt{ε(σ)} & 未建模噪声和局部误差 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+定义色散—角度修正光学坐标
+
+
+\[
+q(\sigma,\theta_0)=2\sigma\sqrt{n^2(\sigma)-\sin^2\theta_0}.
+\]
+相邻同类极值相差一个完整级次，因此
+
+
+\[
+\hat d_k=\frac{10^4}{q(\sigma_{k+1})-q(\sigma_k)}.
+\]
+\subsection*{5. 模型参数来源}
+本问参数按物理来源分为三类：
+
+
+\begin{enumerate}
+\item 入射角\texttt{10°/15°}来自题目条件。
+\item Si折射率采用Edwards–Ochoa红外色散式；4H-SiC采用低掺杂Lorentz振子介电函数。
+\item 背景窗口、寻峰距离和显著性阈值属于数值参数，其中FFT只给出条纹周期初值，最终厚度不由FFT频率直接报告。
+\end{enumerate}
+固定文献折射率模型是为了避免厚度与折射率同时自由拟合导致不可辨识。若有本批晶圆椭偏数据，应优先替换文献参数。
+
+
+\subsection*{6. 模型评分方式}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{评价方法} & \textbf{作用} & \textbf{判定方式} \\ \hline
+\endfirsthead
+\hline \textbf{评价方法} & \textbf{作用} & \textbf{判定方式} \\ \hline
+\endhead
+量纲检查 & 确认相位无量纲、厚度为\texttt{μm} & 公式和代码单位一致 \\ \hline
+退化公式检查 & 验证常折射率条件 & 应退化为\texttt{d=[2Δσ√(n²−sin²θ\textsubscript{0})]\textsuperscript{-}¹} \\ \hline
+峰谷一致性 & 判断极值定位是否受峰形影响 & 峰、谷厚度差越小越稳定 \\ \hline
+双角度一致性 & 验证角度修正和折射率模型 & 同一样品两角度厚度应接近 \\ \hline
+频段敏感性 & 判断结果是否由单一频段决定 & 平移频段后不应无解释跃迁 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+第一问以物理推导和一致性为目标，不使用分类准确率或随机训练—测试划分评分。
+
+
+\subsection*{7. 结果分析}
+\begin{enumerate}
+\item 宽频段内应使用\texttt{q(σ,θ\textsubscript{0})}而不是直接使用原始波数间距，以同时修正折射率色散和入射角。
+\item 厚度信息主要包含在相邻同类极值的基本相位周期中；慢变背景、包络和常数界面相移不直接改变该周期。
+\item SiC与Si两材料、两角度的光学坐标均随波数单调变化，满足相邻极值厚度计算条件。
+\end{enumerate}
+\subsection*{8. 结论解释与边界}
+基础模型为：先根据材料和角度把波数转换为光学坐标，再由相邻同类极值间距估计厚度。它适用于界面近似平行、条纹可解析且主频段吸收较弱的情况。
+
+
+若材料强吸收、界面粗糙、样品存在显著楔角或条纹数少于4个，极值间距将不稳定，不能机械套用当前公式。
+
+
+\subsection*{9. 补充}
+\begin{enumerate}
+\item 常数相移\texttt{φr}不会影响相邻同类极值的完整级次间距。
+\item 论文中应区分空气侧角度\texttt{θ\textsubscript{0}}和层内角度\texttt{θt}。
+\item 不应把折射率和厚度同时设置为完全自由函数。
+\item SiC强声子区若必须使用，应引入复折射率和吸收。
+\end{enumerate}
+\section*{四、第二问解答}
+\subsection*{1. 数据特征分析}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{数据现象} & \textbf{对厚度计算的阻碍} \\ \hline
+\endfirsthead
+\hline \textbf{数据现象} & \textbf{对厚度计算的阻碍} \\ \hline
+\endhead
+两条SiC光谱入射角分别为10°和15° & 不能直接比较原始条纹间距，必须修正角度 \\ \hline
+折射率随波数变化 & 常折射率公式可能产生系统偏差 \\ \hline
+原始谱存在慢变背景和包络 & 直接寻峰容易受局部幅值变化影响 \\ \hline
+极值只落在离散网格附近 & 直接使用采样点峰位存在量化误差 \\ \hline
+条纹数量有限 & 不确定性应以干涉级次而非7469个谱点为单位 \\ \hline
+附件2有3.5078\%观测超过100\% & 需要验证越界反射率是否改变厚度 \\ \hline
+两条谱对应同类晶圆 & 可以作外部一致性检验并形成联合建议 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{2. 问题分析}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{大类问题} & \textbf{需要回答的具体内容} \\ \hline
+\endfirsthead
+\hline \textbf{大类问题} & \textbf{需要回答的具体内容} \\ \hline
+\endhead
+条纹提取 & 如何在背景和包络变化下稳定定位峰与谷 \\ \hline
+厚度计算 & 如何把离散极值转换为色散修正厚度 \\ \hline
+双角度合并 & 两角度结果是否足够一致，能否形成推荐值 \\ \hline
+不确定性 & 如何描述有限级次和参数变化造成的波动 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+判优逻辑是先分别计算两个角度并检查一致性；只有差异小于抽样与系统敏感性尺度时，才报告联合厚度。
+
+
+\subsection*{3. 指标定义}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{指标} & \textbf{定义} & \textbf{作用} \\ \hline
+\endfirsthead
+\hline \textbf{指标} & \textbf{定义} & \textbf{作用} \\ \hline
+\endhead
+单角度厚度 & 峰、谷局部厚度中位数的平均 & 每条光谱独立点估计 \\ \hline
+峰谷差 & 峰序列与谷序列厚度绝对差 & 评价峰形和定位稳定性 \\ \hline
+角度绝对差 & \texttt{|d\textsubscript{1}\textsubscript{0}−d\textsubscript{1}\textsubscript{5}|} & 检查角度修正后的外部一致性 \\ \hline
+角度相对差 & 绝对差除以两角度均值 & 比较不同厚度尺度 \\ \hline
+联合推荐厚度 & 两角度点估计平均 & 汇总最终工程结果 \\ \hline
+相邻阶Bootstrap区间 & 两角度400次重复平均值的2.5\%和97.5\%分位数 & 描述有限条纹级次波动 \\ \hline
+最大敏感性偏移 & 所有扰动情景中\texttt{|d情景−d基准|}最大值 & 描述系统敏感性 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{4. 模型与算法组件及选取缘由}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{模型或算法} & \textbf{是什么} & \textbf{选取缘由} & \textbf{解决的问题} \\ \hline
+\endfirsthead
+\hline \textbf{模型或算法} & \textbf{是什么} & \textbf{选取缘由} & \textbf{解决的问题} \\ \hline
+\endhead
+Savitzky–Golay趋势分离 & 宽窗多项式平滑背景 & 保留周期同时去基线 & 背景与包络 \\ \hline
+FFT周期初始化 & 频谱估计基本周期 & 自动设置寻峰距离，不直接报告厚度 & 寻峰尺度 \\ \hline
+峰谷双通道 & 分别检测峰和谷 & 两条序列互相校验 & 峰形不对称和漏峰 \\ \hline
+三点抛物线插值 & 拟合局部抛物线顶点 & 获得亚网格峰位 & 网格量化误差 \\ \hline
+色散光学坐标 & 将波数映射为\texttt{q(σ,θ\textsubscript{0})} & 同时修正折射率和角度 & 宽频段偏差 \\ \hline
+局部厚度稳健汇总 & 局部间距筛选后取中位数 & 降低漏峰和伪峰影响 & 局部异常 \\ \hline
+相邻阶移动区块Bootstrap & 局部厚度序列按2级次重采样400次 & 保留相邻级次相关性 & 抽样波动 \\ \hline
+参数敏感性 & 改变角度、折射率、频段和截断方案 & 检查合理扰动稳定性 & 系统假设影响 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{5. 整体路线/算法结构}
+\begin{lstlisting}
+附件1、2 SiC原始反射谱
+        ↓ 数据身份、单位、波数顺序和越界值核验
+1500—4000 cm-1透明频段
+        ↓ 背景分离与局部标准化
+去趋势干涉条纹
+        ↓ FFT估计基本周期
+峰谷分别检测
+        ↓ 三点抛物线亚网格定位
+极值波数序列
+        ↓ SiC折射率与入射角修正
+光学坐标q
+        ↓ 局部厚度中位数
+10°、15°独立厚度
+        ↓ 双角度一致性审计
+联合推荐厚度
+        ↓ 400次相邻阶Bootstrap＋参数敏感性
+区间、系统偏移和最终结果
+\end{lstlisting}
+\subsection*{6. 求解方案}
+\subsubsection*{6.1 单条光谱厚度计算}
+\begin{enumerate}
+\item 读取主频段波数和反射率。
+\item 平滑得到背景，并对残差作局部幅值标准化。
+\item FFT得到基本周期初值。
+\item 以周期初值设置峰距，分别检测峰与谷。
+\item 对每个极值作三点抛物线顶点插值。
+\item 把极值波数转换为色散光学坐标。
+\item 计算局部厚度，只保留FFT初值60\%—140\%范围内的间距。
+\item 峰、谷各取中位数，再求平均得到单谱厚度。
+\end{enumerate}
+\subsubsection*{6.2 双角度联合厚度}
+附件1、2独立运行完整流程，分别得到\texttt{d\textsubscript{1}\textsubscript{0}}和\texttt{d\textsubscript{1}\textsubscript{5}}。当前差异远小于Bootstrap区间与参数敏感性尺度，故报告
+
+
+\[
+\hat d_{SiC}=\frac{\hat d_{10}+\hat d_{15}}{2}.
+\]
+\subsubsection*{6.3 不确定性与敏感性}
+在原始光谱上完成一次极值定位，构造局部厚度序列。每条谱按2个相邻级次移动区块进行400次Bootstrap；同一重复编号下把两角度结果平均。
+
+
+另测试入射角\texttt{±0.2°}、折射率尺度\texttt{±0.5\%}、频段位置\texttt{±8\%}及反射率截断方案。
+
+
+\subsection*{7. 验证方案}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{验证层} & \textbf{做法} & \textbf{通过后的含义} \\ \hline
+\endfirsthead
+\hline \textbf{验证层} & \textbf{做法} & \textbf{通过后的含义} \\ \hline
+\endhead
+峰谷内部验证 & 比较峰、谷序列厚度 & 不被单一峰形严重支配 \\ \hline
+双角度外部验证 & 10°和15°分别估计 & 角度修正和色散模型一致 \\ \hline
+频段验证 & 平移主频段并重算 & 不是单一频段偶然产物 \\ \hline
+Bootstrap & 相邻阶序列重采样400次 & 给出有限级次波动范围 \\ \hline
+参数敏感性 & 所有扰动均重算 & 给出系统假设影响尺度 \\ \hline
+复现验证 & 固定种子、输入/脚本/输出哈希 & 唯一命令可重建结果 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{8. 结论对比}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{数据} & \textbf{入射角} & \textbf{厚度/\texttt{μm}} & \textbf{单谱Bootstrap 95\%区间/\texttt{μm}} \\ \hline
+\endfirsthead
+\hline \textbf{数据} & \textbf{入射角} & \textbf{厚度/\texttt{μm}} & \textbf{单谱Bootstrap 95\%区间/\texttt{μm}} \\ \hline
+\endhead
+附件1 & 10° & 7.482232 & [7.405689, 7.648098] \\ \hline
+附件2 & 15° & 7.480400 & [7.291001, 7.569471] \\ \hline
+联合 & — & 7.481316 & [7.397793, 7.584614] \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+两角度绝对差0.001832 \texttt{μm}，相对约0.0245\%。Bootstrap区间明显宽于角度差，说明主要波动来自有限条纹级次和局部峰位，而不是两个角度之间的系统冲突。
+
+
+\subsection*{9. 最终结果}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{指标} & \textbf{数值} \\ \hline
+\endfirsthead
+\hline \textbf{指标} & \textbf{数值} \\ \hline
+\endhead
+SiC推荐厚度 & \textbf{7.481316 μm} \\ \hline
+工程简化表达 & \textbf{约7.48 μm} \\ \hline
+10°/15°绝对差 & 0.001832 μm \\ \hline
+10°/15°相对差 & 约0.0245\% \\ \hline
+相邻阶Bootstrap联合95\%区间 & [7.397793, 7.584614] μm \\ \hline
+参数敏感性最大绝对偏移 & 0.037599 μm \\ \hline
+每谱Bootstrap次数 & 400 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{10. 补充}
+\begin{enumerate}
+\item 六位小数用于复现，不代表仪器具有对应真实精度；工程结论宜写约\texttt{7.48 μm}并给区间。
+\item Bootstrap不在每次重复中重新生成光谱或重新寻峰。
+\item 当前区间不是包含仪器校准、温度和折射率实测的完整不确定度预算。
+\item 若取得本批样品折射率实测值，应重新计算最终厚度。
+\item 附件2越界反射率截断后结果基本不变，因此不需要删除这些点。
+\end{enumerate}
+\section*{五、第三问解答}
+\subsection*{1. 数据特征分析}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{项目} & \textbf{数据特征} & \textbf{对建模的影响} \\ \hline
+\endfirsthead
+\hline \textbf{项目} & \textbf{数据特征} & \textbf{对建模的影响} \\ \hline
+\endhead
+峰形 & Si低波数条纹较尖，存在非正弦形态 & 需要检查高阶反射或多光束干涉 \\ \hline
+谐波 & Si二次谐波/基频约10.4\%和7.2\%；SiC约4.2\%和6.1\% & 只作多光束迹象，不能单独证明需修正厚度 \\ \hline
+基本周期 & Si两角度厚度仍高度一致 & 多光束主要改变峰形，未明显破坏基本周期 \\ \hline
+残差相关 & 连续波数残差强自相关 & 随机交叉验证和独立样本BIC解释不可靠 \\ \hline
+模型自由度 & 三谐波参数多于单谐波 & 训练RSS下降不能直接判优 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{2. 问题分析}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.4600\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{大类问题} & \textbf{需要回答的具体内容} \\ \hline
+\endfirsthead
+\hline \textbf{大类问题} & \textbf{需要回答的具体内容} \\ \hline
+\endhead
+物理条件 & 多光束干涉在什么条件下形成并可观测 \\ \hline
+数学模型 & 如何把无限级反射写成Fresnel–Airy形式 \\ \hline
+数据判断 & 附件3、4是否有多光束影响迹象 \\ \hline
+影响消除 & 是否需要用多谐波模型修正厚度 \\ \hline
+最终厚度 & 若不修正，Si厚度如何计算并验证 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+必须区分：“存在谐波迹象”是光谱形态判断；“采用多谐波修正厚度”是模型选择决策。前者成立不自动推出后者成立。
+
+
+\subsection*{3. 指标定义}
+\subsubsection*{3.1 维持定义}
+色散光学坐标、峰谷局部厚度、双角度差、相邻阶Bootstrap区间和参数敏感性沿用前述定义。
+
+
+\subsubsection*{3.2 新增定义}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{指标} & \textbf{定义} & \textbf{作用} \\ \hline
+\endfirsthead
+\hline \textbf{指标} & \textbf{定义} & \textbf{作用} \\ \hline
+\endhead
+二次谐波/基频幅值 & 二次谐波振幅与基频振幅之比 & 描述非正弦峰形，只作辅助迹象 \\ \hline
+连续留块NRMSE & 验证块RMSE除以训练折反射率标准差 & 比较未见频段外推误差 \\ \hline
+三谐波CV变化 & \texttt{100×(NRMSE单−NRMSE三)/NRMSE单} & 正值为改善，负值为恶化 \\ \hline
+角度一致性 & 10°与15°基本周期厚度绝对差 & 判断基本周期是否稳定 \\ \hline
+峰谷差 & 峰、谷序列厚度绝对差 & 反映峰形和弱条纹定位风险 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsubsection*{3.3 变更定义}
+模型判优不再以全样本RSS或形式BIC下降为主，而改为连续留块验证NRMSE。谱点强自相关且三谐波自由度更高，全样本拟合改善不足以证明复杂模型有外推价值。
+
+
+\subsection*{4. 模型与算法组件及选取缘由}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.2300\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{模型或算法} & \textbf{是什么} & \textbf{选取缘由} & \textbf{解决的问题} \\ \hline
+\endfirsthead
+\hline \textbf{模型或算法} & \textbf{是什么} & \textbf{选取缘由} & \textbf{解决的问题} \\ \hline
+\endhead
+Fresnel–Airy模型 & 上下界面无限级反射振幅几何级数 & 直接描述尖峰和高阶谐波 & 多光束物理机制 \\ \hline
+单谐波模型 & 只保留基本相位正弦和余弦 & 低复杂度两光束基准 & 基线波形 \\ \hline
+三谐波模型 & 相同基本相位加入二、三次谐波 & 近似Airy尖峰，不改变基本周期定义 & 高阶峰形 \\ \hline
+5折连续留块 & 按波数顺序留出连续频段 & 不随机泄漏相邻点 & 泛化比较 \\ \hline
+96点隔离带 & 验证块两侧训练点同时删除 & 减少局部相关跨边界传递 & 泄漏控制 \\ \hline
+固定搜索边界 & SiC 5—10 \texttt{μm}，Si 2—6 \texttt{μm} & 不读取验证块和全谱初值 & 训练折封闭 \\ \hline
+基本周期厚度 & 峰谷色散间距法 & 多光束改变峰形但不应改变理想基本周期 & 最终厚度 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{5. 整体路线/算法结构}
+\begin{lstlisting}
+附件3、4 Si反射谱
+        ↓ 背景分离、条纹与谐波诊断
+多光束候选迹象
+        ↓ 建立Fresnel–Airy模型
+单谐波基准＋三谐波近似
+        ↓ 5折连续留块、每侧96点隔离
+训练折拟合／验证块预测
+        ↓ 比较NRMSE
+三谐波是否改善外推
+        ↓ 当前四条谱均为负增益
+不采用多谐波厚度修正
+        ↓ 沿用色散修正基本周期
+Si 10°、15°厚度
+        ↓ 双角度、Bootstrap和敏感性验证
+Si最终厚度与多光束结论
+\end{lstlisting}
+\subsection*{6. 求解方案}
+\subsubsection*{6.1 多光束物理模型}
+多光束可观测至少需要：光源相干长度足够、界面反射率足够、材料吸收较弱、界面平行且粗糙度小、多级出射光空间重合、光谱仪分辨率足够。
+
+
+设两界面复振幅反射系数为\texttt{r\textsubscript{0}\textsubscript{1}}、\texttt{r\textsubscript{1}\textsubscript{2}}，则
+
+
+\[
+r_{eff}(\sigma)=\frac{r_{01}+r_{12}e^{i\Phi(\sigma)}}
+{1+r_{01}r_{12}e^{i\Phi(\sigma)}},
+\qquad R(\sigma)=|r_{eff}(\sigma)|^2.
+\]
+\subsubsection*{6.2 单谐波与三谐波拟合}
+两个模型共享由厚度和色散光学坐标确定的基本相位。单谐波只保留\texttt{k=1}，三谐波加入\texttt{k=2,3}；每个谐波允许缓慢变化的幅值项，以吸收包络而不改变相位频率。
+
+
+\subsubsection*{6.3 连续留块验证}
+每条谱按波数顺序划分5个验证块。验证块及两侧各96点不参与训练；厚度在固定材料范围内优化，回归系数和归一化尺度只从当前训练折计算。
+
+
+\subsection*{7. 验证方案}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{验证层} & \textbf{具体做法} & \textbf{判定原则} \\ \hline
+\endfirsthead
+\hline \textbf{验证层} & \textbf{具体做法} & \textbf{判定原则} \\ \hline
+\endhead
+物理条件审计 & 检查相干、界面、吸收、平行度、空间重合和分辨率 & 必要条件不等于数据充分证据 \\ \hline
+谐波辅助诊断 & 计算二次谐波/基频幅值 & 只描述峰形，不单独决定模型 \\ \hline
+连续留块验证 & 5折外推并设置96点隔离带 & 三谐波NRMSE稳定更低才采用修正 \\ \hline
+双角度验证 & 附件3、4分别由基本周期求厚度 & 检查基本周期稳定性 \\ \hline
+相邻阶Bootstrap & 每条Si光谱400次 & 描述有限级次波动 \\ \hline
+参数敏感性 & 角度、折射率、频段、截断均重算 & 判断假设敏感程度 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\subsection*{8. 结论对比}
+\begin{landscape}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.1880\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1880\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1880\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1880\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1880\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{数据} & \textbf{单谐波CV NRMSE} & \textbf{三谐波CV NRMSE} & \textbf{三谐波变化} & \textbf{模型决策} \\ \hline
+\endfirsthead
+\hline \textbf{数据} & \textbf{单谐波CV NRMSE} & \textbf{三谐波CV NRMSE} & \textbf{三谐波变化} & \textbf{模型决策} \\ \hline
+\endhead
+附件1，SiC 10° & 0.459117 & 0.485756 & −5.8023\% & 不采用修正 \\ \hline
+附件2，SiC 15° & 0.491686 & 0.518969 & −5.5488\% & 不采用修正 \\ \hline
+附件3，Si 10° & 2.130986 & 2.220416 & −4.1967\% & 不采用修正 \\ \hline
+附件4，Si 15° & 1.950227 & 2.050965 & −5.1654\% & 不采用修正 \\ \hline
+SiC平均 & — & — & \textbf{−5.6755\%} & 只保留谐波迹象 \\ \hline
+Si平均 & — & — & \textbf{−4.6810\%} & 只保留谐波迹象 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\end{landscape}
+四条光谱的三谐波验证增益全部为负。全样本RSS和形式BIC虽更好，但连续留块结果说明新增自由度没有提升未见频段预测，故不能用其修正厚度。
+
+
+\subsection*{9. 最终结果}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{材料/数据} & \textbf{指标} & \textbf{结果} \\ \hline
+\endfirsthead
+\hline \textbf{材料/数据} & \textbf{指标} & \textbf{结果} \\ \hline
+\endhead
+Si附件3，10° & 基本周期厚度 & 3.476273 μm \\ \hline
+Si附件4，15° & 基本周期厚度 & 3.474688 μm \\ \hline
+Si & 两角度绝对差 & 0.001585 μm \\ \hline
+Si & 推荐厚度 & \textbf{3.475480 μm} \\ \hline
+Si & 相邻阶Bootstrap联合95\%区间 & [3.386298, 3.628350] μm \\ \hline
+Si & 参数敏感性最大绝对偏移 & 0.058301 μm \\ \hline
+SiC & 三谐波平均验证变化 & −5.6755\% \\ \hline
+Si & 三谐波平均验证变化 & −4.6810\% \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+最终结论：SiC和Si均采用色散修正基本周期厚度，不进行多谐波厚度修正；谐波和尖峰只作为“可能存在多光束影响”的定性证据。
+
+
+\subsection*{10. 补充}
+\begin{enumerate}
+\item “存在谐波”不等同于“高阶模型能更准确估计厚度”。
+\item 不能用全样本BIC下降单独证明多光束模型更优。
+\item Si附件4峰谷估计差约0.239 μm，局部定位不确定性高于SiC。
+\item 附件未提供掺杂浓度、消光系数和完整界面参数，不能稳定同时辨识Drude项、反射率参数和厚度。
+\item 若未来有独立界面参数和重复测量，可拟合复折射率Airy模型并继续用连续留块验证。
+\end{enumerate}
+\section*{六、补充验证与最终诊断}
+\subsection*{1. 最终厚度建议}
+\begin{landscape}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.1567\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{材料} & \textbf{10°厚度/\texttt{μm}} & \textbf{15°厚度/\texttt{μm}} & \textbf{推荐厚度/\texttt{μm}} & \textbf{两角度差/\texttt{μm}} & \textbf{相邻阶Bootstrap联合95\%区间/\texttt{μm}} \\ \hline
+\endfirsthead
+\hline \textbf{材料} & \textbf{10°厚度/\texttt{μm}} & \textbf{15°厚度/\texttt{μm}} & \textbf{推荐厚度/\texttt{μm}} & \textbf{两角度差/\texttt{μm}} & \textbf{相邻阶Bootstrap联合95\%区间/\texttt{μm}} \\ \hline
+\endhead
+4H-SiC & 7.482232 & 7.480400 & \textbf{7.481316} & 0.001832 & [7.397793, 7.584614] \\ \hline
+Si & 3.476273 & 3.474688 & \textbf{3.475480} & 0.001585 & [3.386298, 3.628350] \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+\end{landscape}
+工程写作时可简化为约\texttt{7.48 μm}和\texttt{3.48 μm}，但必须同时给出验证区间及其含义，不能用复现小数位冒充实际精度。
+
+
+\subsection*{2. 模型选择诊断}
+\begin{itemize}
+\item 四条光谱的三谐波连续留块验证变化全部为负。
+\item SiC平均恶化5.6755\%，Si平均恶化4.6810\%。
+\item 最终不采用多谐波厚度修正，只保留多光束影响的物理说明。
+\item 双角度点估计高度一致，说明基本相位周期比高阶峰形参数更稳定。
+\end{itemize}
+\subsection*{3. 参数敏感性诊断}
+\begin{center}
+\scriptsize
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|>{\raggedright\arraybackslash}p{\dimexpr 0.3067\linewidth-2\tabcolsep\relax}|}
+\hline
+\textbf{敏感性因素} & \textbf{扰动方案} & \textbf{当前解释} \\ \hline
+\endfirsthead
+\hline \textbf{敏感性因素} & \textbf{扰动方案} & \textbf{当前解释} \\ \hline
+\endhead
+入射角 & \texttt{±0.2°} & 当前小角度下影响较小，但纳入系统敏感性 \\ \hline
+折射率 & 尺度\texttt{±0.5\%} & 厚度近似反向变化，是主要系统假设 \\ \hline
+拟合频段 & 主频段位置\texttt{±8\%} & Si比SiC更敏感，与弱条纹一致 \\ \hline
+反射率截断 & 是否限制到0—100\% & 对厚度几乎无影响，越界点主要改变幅值 \\ \hline
+\end{longtable}
+\normalsize
+\end{center}
+最大绝对敏感性偏移：SiC为0.037599 \texttt{μm}，Si为0.058301 \texttt{μm}。
+
+
+\subsection*{4. Bootstrap与验证边界}
+\begin{itemize}
+\item Bootstrap对象是相邻同类极值形成的局部厚度序列，不是7469个原始谱点。
+\item 块长为2个相邻级次，每条谱重复400次。
+\item 联合区间通过相同重复编号下两角度结果平均得到，重复值已经保存。
+\item 区间只反映有限条纹级次波动，不包含仪器校准、温度、样品位置、折射率实测和重复制样。
+\item 连续留块验证采用5折，验证块两侧各设置96点隔离带。
+\end{itemize}
+\subsection*{5. 论文结论边界}
+\begin{enumerate}
+\item 可以写“SiC外延层推荐厚度约为7.48 μm，两个入射角结果高度一致”。
+\item 可以写“存在谐波迹象，但连续留块验证不支持三谐波修正厚度”。
+\item 不能写“7469个独立样本证明厚度极其精确”。
+\item 不能写“反射率超过100\%的数据一定错误并已删除”。
+\item 不能写“BIC下降证明多光束模型全局最优”。
+\item 不能把Bootstrap分位区间称为完整工业测量学置信区间。
+\item 当前Word采用Skill内置CUMCM基线；2025届官方模板仍需提交前核验和替换。
+\end{enumerate}
+\end{document}

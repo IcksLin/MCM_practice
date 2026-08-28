@@ -1,0 +1,87 @@
+{
+  "seed": 20250825,
+  "bootstrap_repeats": 400,
+  "bootstrap_method": "moving-block bootstrap of adjacent-order local thickness sequence",
+  "block_length_local_orders": 2,
+  "blocked_cv": {
+    "folds": 5,
+    "purge_gap_points_each_side": 96,
+    "SiC_bounds_um": [
+      5.0,
+      10.0
+    ],
+    "Si_bounds_um": [
+      2.0,
+      6.0
+    ]
+  },
+  "bands_cm-1": {
+    "SiC": [
+      1500.0,
+      4000.0
+    ],
+    "Si": [
+      1000.0,
+      4000.0
+    ]
+  },
+  "reproduce_command": "\"E:\\anaconda\\python.exe\" scripts/run_b.py",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "dependencies": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.0"
+  },
+  "inputs": {
+    "附件1.xlsx": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+    "附件2.xlsx": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+    "附件3.xlsx": "79e9f66a00409f1d1130d9f4f3d76b4d5e5a1ccd3ac2d24dc0af8ecc583d0ec8",
+    "附件4.xlsx": "9cf1400404c4560958da06685beb8c2e1e4df5918a6e13863663a54440ba12e3"
+  },
+  "scripts": {
+    "scripts\\run_b.py": "b7faa7875d43d87ef7915842ca9fbe18861120547bcb2c184f8350988272587a",
+    "algorithms\\solve_b.py": "2f97814334dbbe682c68fa57dd52c5c81e566f341696106acbd365dc2aac571c",
+    "algorithms\\robustness_b.py": "6d294bba6a1b8746291f5aba4568b95499a3516dda1f5ad56c7916400d51076c"
+  },
+  "outputs": [
+    "results/b_results.json",
+    "results/b_summary.csv",
+    "results/robustness_summary.csv",
+    "results/sensitivity_details.csv",
+    "results/final_recommendations.csv",
+    "results/bootstrap_repeats.csv",
+    "results/bootstrap_joint_repeats.csv"
+  ],
+  "output_files": {
+    "results/b_results.json": {
+      "bytes": 2585,
+      "sha256": "2a4631c00f7361762f784050e71d002be7214175f1de050c3a69c45d9f7ccb44"
+    },
+    "results/b_summary.csv": {
+      "bytes": 413,
+      "sha256": "33b2f7be0f064aa6d6a91483d49d9c7797ddbf8b397e51fb15afb09683cbc1b7"
+    },
+    "results/robustness_summary.csv": {
+      "bytes": 674,
+      "sha256": "138fc733dd42a9554abe1373ca60f0b44e2adf8408e22ec1f181f5acc7a7e4dd"
+    },
+    "results/sensitivity_details.csv": {
+      "bytes": 3000,
+      "sha256": "c1965e4c00f2ebff53c6f7da33ed391815ef441a8c3c1b8e8d94e9a1238b35db"
+    },
+    "results/final_recommendations.csv": {
+      "bytes": 509,
+      "sha256": "e8fc4fcc1f811496e5aabe80fcc77cdb811cbb1fbd9c4fa7e449a94a128e3c42"
+    },
+    "results/bootstrap_repeats.csv": {
+      "bytes": 59170,
+      "sha256": "d5d9bf1a29cc3eeb06510735ed14921587dbc0438a724c50e40c8ae4812b35e1"
+    },
+    "results/bootstrap_joint_repeats.csv": {
+      "bytes": 21144,
+      "sha256": "432a1cdc00a7a0709ca605af1885720859a6042aa837e731570f36076ffaf98e"
+    }
+  }
+}

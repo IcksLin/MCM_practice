@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-24T19:01:19.828911+00:00",
+  "generated_at_utc": "2026-08-25T10:44:31.815976+00:00",
   "project_root": "C题",
   "reproduction": {
     "light": "python scripts/run_all.py",
@@ -44,8 +44,8 @@
     },
     {
       "path": "docs/C题总思路表.md",
-      "bytes": 50579,
-      "sha256": "e87843f802dfc7b5e04a89ac8bf7d0e18f9c57e46f396ba0e7408f7e54cd8719"
+      "bytes": 51209,
+      "sha256": "d72802c895a8f4118ae2685812b74e40cd056afb86a06e4bac3871c20a2ac899"
     },
     {
       "path": "docs/Optimal_Binning方法说明.md",
@@ -119,8 +119,8 @@
     },
     {
       "path": "scripts/build_manifest.py",
-      "bytes": 1491,
-      "sha256": "88d0dd5b85a1b643e2108238b39aa58e51fd0ac11193deb07fad028420772651"
+      "bytes": 2365,
+      "sha256": "be1a5478462e78bf633c1587fcf1a79a1d1738b3405e6d4f647382d4c6f1de9c"
     },
     {
       "path": "scripts/build_thoughts_pdf.py",
